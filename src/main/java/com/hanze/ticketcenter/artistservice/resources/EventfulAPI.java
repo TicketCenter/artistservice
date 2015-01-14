@@ -2,17 +2,25 @@ package com.hanze.ticketcenter.artistservice.resources;
 
 import com.hanze.ticketcenter.artistservice.utils.APIReader;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public class EventfulAPI {
-    private static final String API_URL = "http://api.eventful.com/json/events/";
+    private static final String API_URL = "http://api.eventful.com/";
     private static final String API_KEY = "JFfNZghvjMLmbzh2";
+    private static final String API_FORMAT = "json";
 
-    public String read(String method, Map params, List remove) {
-        String url = this.requestUrl(method, params);
-        APIReader apiReader = new APIReader(url, "json");
+    public String read(String resource, String method, Map params, List remove) {
+        String url = this.url(resource, method, params);
+        APIReader apiReader = new APIReader(url, API_FORMAT);
+
+        try {
+            apiReader.read();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
 
         if(remove != null) {
             apiReader.removeAttributes(remove);
@@ -21,7 +29,7 @@ public class EventfulAPI {
         return apiReader.getString();
     }
 
-    private String requestUrl(String method, Map params) {
+    private String url(String resource, String method, Map params) {
         Iterator iterator = params.entrySet().iterator();
         String string = "";
 
@@ -30,6 +38,6 @@ public class EventfulAPI {
             string += "&" + pairs.getKey() + "=" + pairs.getValue();
         }
 
-        return API_URL + method + "?app_key=" + API_KEY + "&category=music" + string;
+        return API_URL + "/" + API_FORMAT + "/" + resource + "/" + method + "?app_key=" + API_KEY + string;
     }
 }

@@ -19,15 +19,9 @@ public class APIReader {
         this.url = url;
         this.format = format;
         this.string = "";
-
-        try {
-            this.read();
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
     }
 
-    private void read() throws IOException {
+    public void read() throws IOException {
         InputStream inputStream = new URL(url).openStream();
 
         try {
@@ -40,7 +34,9 @@ public class APIReader {
     }
 
     public void removeAttributes(List remove) {
-        if(this.format.equals("json")) {
+        if(this.format.equals("xml")) {
+            // TODO: Convert XML to String
+        } else if(this.format.equals("json")) {
             JSONObject jsonObject = (JSONObject) JSONValue.parse(this.string);
             Iterator iterator = remove.iterator();
 
@@ -49,8 +45,6 @@ public class APIReader {
             }
 
             this.string = jsonObject.toString();
-        } else if(this.format.equals("xml")) {
-            // TODO
         }
     }
 

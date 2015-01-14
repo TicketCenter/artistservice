@@ -12,6 +12,7 @@ public class ConcertsDAO extends EventfulAPI implements ConcertsDAOInterface {
     @Override
     public String getConcerts(String location, String pageSize, String pageNumber) {
         Map<String, String> params = new HashMap<>();
+            params.put("category", "music");
             params.put("location", location);
             params.put("page_size", pageSize);
             params.put("page_number", pageNumber);
@@ -21,12 +22,13 @@ public class ConcertsDAO extends EventfulAPI implements ConcertsDAOInterface {
             remove.add("first_item");
             remove.add("last_item");
 
-        return this.read("search", params, remove);
+        return this.read("events", "search", params, remove);
     }
 
     @Override
     public String getConcert(String id) {
         Map<String, String> params = new HashMap<>();
+            params.put("category", "music");
             params.put("id", id);
 
         List<String> remove = new ArrayList<>();
@@ -56,6 +58,6 @@ public class ConcertsDAO extends EventfulAPI implements ConcertsDAOInterface {
             remove.add("tz_city");
             remove.add("stop_time");
 
-        return this.read("get", params, remove);
+        return this.read("events", "get", params, remove);
     }
 }
