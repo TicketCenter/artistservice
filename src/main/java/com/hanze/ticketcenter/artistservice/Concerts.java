@@ -1,13 +1,12 @@
 package com.hanze.ticketcenter.artistservice;
 
-import com.hanze.ticketcenter.artistservice.resources.ConcertsAPI;
+import com.hanze.ticketcenter.artistservice.dao.ConcertsDAO;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 @Path("concerts")
 public class Concerts {
-
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getConcerts(
@@ -15,11 +14,7 @@ public class Concerts {
             @DefaultValue("10") @QueryParam("page_size") String pageSize,
             @DefaultValue("1") @QueryParam("page_number") String pageNumber) {
 
-        String params = "&location=" + location +
-                "&page_size=" + pageSize +
-                "&page_number=" + pageNumber;
-
-        return new ConcertsAPI().read("search", params);
+        return new ConcertsDAO().getConcerts(location, pageSize, pageNumber);
     }
 
     @GET
@@ -28,8 +23,6 @@ public class Concerts {
     public String getConcert(
             @QueryParam("id") String id) {
 
-        String params = "&id=" + id;
-
-        return new ConcertsAPI().read("get", params);
+        return new ConcertsDAO().getConcert(id);
     }
 }
