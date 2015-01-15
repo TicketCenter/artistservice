@@ -9,7 +9,7 @@ import java.util.Map;
 
 abstract public class EventfulAPI {
     private static final String API_URL = "http://api.eventful.com/";
-    private static final String API_KEY = "API KEY";
+    private static final String API_KEY = "JFfNZghvjMLmbzh2";
     private static final String API_FORMAT = "json";
 
     public String read(String resource, String method, Map parameters, List attributes) {
