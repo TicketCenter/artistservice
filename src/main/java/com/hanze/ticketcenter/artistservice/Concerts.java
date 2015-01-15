@@ -11,8 +11,8 @@ public class Concerts {
     @Produces(MediaType.APPLICATION_JSON)
     public String getConcerts(
             @DefaultValue("") @QueryParam("location") String location,
-            @DefaultValue("10") @QueryParam("page_size") String pageSize,
-            @DefaultValue("1") @QueryParam("page_number") String pageNumber) {
+            @DefaultValue("") @QueryParam("page_size") String pageSize,
+            @DefaultValue("") @QueryParam("page_number") String pageNumber) {
 
         return new ConcertsDAO().getConcerts(location, pageSize, pageNumber);
     }
