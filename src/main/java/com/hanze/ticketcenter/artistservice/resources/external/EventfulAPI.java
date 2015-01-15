@@ -1,4 +1,4 @@
-package com.hanze.ticketcenter.artistservice.resources;
+package com.hanze.ticketcenter.artistservice.resources.external;
 
 import com.hanze.ticketcenter.artistservice.utils.APIReader;
 
@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class EventfulAPI {
+abstract public class EventfulAPI {
     private static final String API_URL = "http://api.eventful.com/";
     private static final String API_KEY = "JFfNZghvjMLmbzh2";
     private static final String API_FORMAT = "json";

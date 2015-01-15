@@ -3,6 +3,8 @@ package com.hanze.ticketcenter.artistservice.utils;
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,6 +35,7 @@ public class APIReader {
         }
     }
 
+    // TODO: Removes only upper layered keys, not nested
     public void removeAttributes(List remove) {
         if(this.format.equals("xml")) {
             // TODO: Convert XML to String
@@ -41,10 +44,26 @@ public class APIReader {
             Iterator iterator = remove.iterator();
 
             while(iterator.hasNext()) {
-                jsonObject.remove(iterator.next());
+                String key = (String) iterator.next();
+                JSONParser parser = new JSONParser();
+                KeyFinder finder = new KeyFinder();
+                finder.setMatchKey(key);
+
+                try {
+                    while(!finder.isEnd()) {
+                        parser.parse(this.string, finder, true);
+
+                        if(finder.isFound()) {
+                            finder.setFound(false);
+                            jsonObject.remove(key);
+                        }
+                    }
+                } catch(ParseException e) {
+                    e.printStackTrace();
+                }
             }
 
-            this.string = jsonObject.toString();
+            this.string = JSONValue.toJSONString(jsonObject);
         }
     }
 
