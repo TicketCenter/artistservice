@@ -1,4 +1,4 @@
-package com.hanze.ticketcenter.artistservice.resources.external;
+package com.hanze.ticketcenter.artistservice.resources;
 
 import com.hanze.ticketcenter.artistservice.utils.APIReader;
 
@@ -12,25 +12,27 @@ abstract public class EventfulAPI {
     private static final String API_KEY = "JFfNZghvjMLmbzh2";
     private static final String API_FORMAT = "json";
 
-    public String read(String resource, String method, Map params, List remove) {
-        String url = this.url(resource, method, params);
+    public String read(String resource, String method, Map parameters, List attributes) {
+        String url = this.url(resource, method, parameters);
         APIReader apiReader = new APIReader(url, API_FORMAT);
 
         try {
             apiReader.read();
+
+            if(attributes != null) {
+                apiReader.getAttributes(attributes);
+            }
+
+            return apiReader.getString();
         } catch(IOException e) {
             e.printStackTrace();
         }
 
-        if(remove != null) {
-            apiReader.removeAttributes(remove);
-        }
-
-        return apiReader.getString();
+        return null;
     }
 
-    private String url(String resource, String method, Map params) {
-        Iterator iterator = params.entrySet().iterator();
+    private String url(String resource, String method, Map parameters) {
+        Iterator iterator = parameters.entrySet().iterator();
         String string = "";
 
         while(iterator.hasNext()) {

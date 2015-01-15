@@ -1,10 +1,9 @@
 package com.hanze.ticketcenter.artistservice.utils;
 
 import org.apache.commons.io.IOUtils;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -35,35 +34,63 @@ public class APIReader {
         }
     }
 
-    // TODO: Removes only upper layered keys, not nested
-    public void removeAttributes(List remove) {
+    public void getAttributes(List attributes) {
         if(this.format.equals("xml")) {
             // TODO: Convert XML to String
         } else if(this.format.equals("json")) {
+            // TODO: Change JSONObject into LinkedHashMap
             JSONObject jsonObject = (JSONObject) JSONValue.parse(this.string);
-            Iterator iterator = remove.iterator();
+            JSONObject newJsonObject = new JSONObject();
+            Iterator iterator = attributes.iterator();
 
             while(iterator.hasNext()) {
-                String key = (String) iterator.next();
-                JSONParser parser = new JSONParser();
-                KeyFinder finder = new KeyFinder();
-                finder.setMatchKey(key);
+                String[] attributesSplit = iterator.next().toString().split("/");
 
-                try {
-                    while(!finder.isEnd()) {
-                        parser.parse(this.string, finder, true);
+                if(attributesSplit.length == 1) {
+                    String[] keysSplit = attributesSplit[0].split(",");
 
-                        if(finder.isFound()) {
-                            finder.setFound(false);
-                            jsonObject.remove(key);
-                        }
+                    for(int i = 0; i < keysSplit.length; i++) {
+                        newJsonObject.put(keysSplit[i], jsonObject.get(keysSplit[i]));
                     }
-                } catch(ParseException e) {
-                    e.printStackTrace();
+                } else if(attributesSplit.length == 3) {
+                    JSONObject oneDeepOld = (JSONObject) jsonObject.get(attributesSplit[0]);
+                    String[] keysSplit = attributesSplit[2].split(",");
+
+                    if(oneDeepOld.get(attributesSplit[1]) instanceof JSONObject) {
+                        JSONObject threeDeepOld = (JSONObject) oneDeepOld.get(attributesSplit[1]);
+                        JSONObject threeDeepNew = new JSONObject();
+
+                        for(int i = 0; i < keysSplit.length; i++) {
+                            threeDeepNew.put(keysSplit[i], threeDeepOld.get(keysSplit[i]));
+                        }
+
+                        JSONObject twoDeepNew = new JSONObject();
+                        twoDeepNew.put(attributesSplit[1], threeDeepNew);
+                        newJsonObject.put(attributesSplit[0], twoDeepNew);
+
+                    } else if(oneDeepOld.get(attributesSplit[1]) instanceof JSONArray) {
+                        JSONArray threeDeepOld = (JSONArray) oneDeepOld.get(attributesSplit[1]);
+                        JSONArray fourDeepNew = new JSONArray();
+
+                        for(int i = 0; i < threeDeepOld.size(); i++) {
+                            JSONObject threeDeepOldOne = (JSONObject) threeDeepOld.get(i);
+                            JSONObject threeDeepNew = new JSONObject();
+
+                            for(int j = 0; j < keysSplit.length; j++) {
+                                threeDeepNew.put(keysSplit[j], threeDeepOldOne.get(keysSplit[j]));
+                            }
+
+                            fourDeepNew.add(threeDeepNew);
+                        }
+
+                        JSONObject twoDeepNew = new JSONObject();
+                        twoDeepNew.put(attributesSplit[1], fourDeepNew);
+                        newJsonObject.put(attributesSplit[0], twoDeepNew);
+                    }
                 }
             }
 
-            this.string = JSONValue.toJSONString(jsonObject);
+            this.string = JSONValue.toJSONString(newJsonObject);
         }
     }
 
