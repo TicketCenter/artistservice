@@ -1,4 +1,4 @@
-package com.hanze.ticketcenter.artistservice.utils;
+package com.hanze.ticketcenter.artistservice.utils.api;
 
 import org.apache.commons.io.IOUtils;
 import org.json.simple.JSONArray;
@@ -11,29 +11,28 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 
-public class APIReader {
-    private String url;
-    private String string;
-
-    public APIReader(String url) {
-        this.url = url;
-        this.string = "";
-    }
-
-    public void read() throws IOException {
+abstract public class APIReader {
+    public String readApi(String url, List attributes) throws IOException {
         InputStream inputStream = new URL(url).openStream();
+        String string = null;
 
         try {
-            this.string = IOUtils.toString(inputStream);
+            string = IOUtils.toString(inputStream);
+
+            if(attributes != null) {
+                return this.getAttributes(string, attributes);
+            }
         } catch(IOException e) {
             e.printStackTrace();
         } finally {
             IOUtils.closeQuietly(inputStream);
         }
+
+        return string;
     }
 
-    public void getAttributes(List attributes) {
-        JSONObject jsonObject = (JSONObject) JSONValue.parse(this.string);
+    private String getAttributes(String string, List attributes) {
+        JSONObject jsonObject = (JSONObject) JSONValue.parse(string);
         JSONObject newJsonObject = new JSONObject();
         Iterator iterator = attributes.iterator();
 
@@ -84,10 +83,6 @@ public class APIReader {
             }
         }
 
-        this.string = JSONValue.toJSONString(newJsonObject);
-    }
-
-    public String getString() {
-        return this.string;
+        return JSONValue.toJSONString(newJsonObject);
     }
 }
