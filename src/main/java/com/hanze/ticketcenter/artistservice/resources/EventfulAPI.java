@@ -14,7 +14,7 @@ abstract public class EventfulAPI {
 
     public String read(String resource, String method, Map parameters, List attributes) {
         String url = this.url(resource, method, parameters);
-        APIReader apiReader = new APIReader(url, API_FORMAT);
+        APIReader apiReader = new APIReader(url);
 
         try {
             apiReader.read();
