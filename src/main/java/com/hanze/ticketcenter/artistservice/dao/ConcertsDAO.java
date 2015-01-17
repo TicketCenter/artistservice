@@ -18,8 +18,8 @@ public class ConcertsDAO extends EventfulAPI implements ConcertsDAOInterface {
         parameters.put("page_number", pageNumber);
 
         List<String> attributes = new ArrayList<>();
-        attributes.add("total_items,page_number,page_size,page_count,search_time");
-        // TODO: Add more attributes
+        attributes.add("total_items, page_number, page_size, page_count, search_time");
+        attributes.add("events/event/id, title, description, country_name, olson_path, region_name, city_name, postal_code, venue_name, start_time, stop_time, created, modified");
 
         return this.read("events", "search", parameters, attributes);
     }
@@ -30,9 +30,10 @@ public class ConcertsDAO extends EventfulAPI implements ConcertsDAOInterface {
         parameters.put("id", id);
 
         List<String> attributes = new ArrayList<>();
-        attributes.add("withdrawn");
-        attributes.add("children");
-        // TODO: Add more attributes
+        attributes.add("id, title, description, country, olson_path, region, city, postal_code, venue_name, start_time, stop_time, created, modified");
+        attributes.add("performers/performer/name, short_bio");
+        attributes.add("images/image/id, url, width, height");
+        attributes.add("tags/tag/id, title");
 
         return this.read("events", "get", parameters, attributes);
     }
