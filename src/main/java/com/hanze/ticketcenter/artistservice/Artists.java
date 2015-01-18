@@ -8,9 +8,19 @@ import javax.ws.rs.core.MediaType;
 @Path("artists")
 public class Artists {
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getArtists(
+            @DefaultValue("a") @QueryParam("character") String location,
+            @DefaultValue("") @QueryParam("page_size") String pageSize,
+            @DefaultValue("") @QueryParam("page_number") String pageNumber) {
+
+        return new ArtistsDAO().getArtists(location, pageSize, pageNumber);
+    }
+
+    @GET
     @Path("/{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getConcert(
+    public String getArtist(
             @PathParam("name") String name) {
 
         return new ArtistsDAO().getArtist(name);

@@ -20,13 +20,11 @@
         <p>An overview of all the available sources. Click on a specific source for more information about that source.</p>
     </div>
     <h4>Concerts</h4>
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel-group" id="accordionOne" role="tablist" aria-multiselectable="true">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingOne">
                 <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        /api/concerts
-                    </a>
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">/api/concerts</a>
                 </h4>
             </div>
             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
@@ -70,9 +68,7 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        /api/concerts/{id}
-                    </a>
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionOne" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">/api/concerts/{id}</a>
                 </h4>
             </div>
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
@@ -102,12 +98,54 @@
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionTwo" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        /api/artists/{name}
-                    </a>
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionTwo" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">/api/artists</a>
                 </h4>
             </div>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body">
+                    <p>An overview of the source. Filters can be combined.</p>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Filter options</th>
+                            <th>Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><a href="/api/artists" target="_blank">/api/concerts</a></td>
+                            <td></td>
+                            <td>Gets all artists (filtered on character <em>a</em> by default).</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><a href="/api/artists?character=a" target="_blank">character={character}</a></td>
+                            <td>Gets all artists filtered on a character.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><a href="/api/artists?page_size=10" target="_blank">page_size={page_size}</a></td>
+                            <td>Gets all artists filtered on page size.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><a href="/api/artists?page_number=1" target="_blank">page_number={page_number}</a></td>
+                            <td>Gets all artists filtered on page number</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p class="small"><em><strong>Example:</strong> <a href="/api/artists?character=a&page_size=10&page_number=1" target="_blank">/api/artists?character=a&page_size=10&page_number=1</a></em></p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionTwo" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">/api/artists/{name}</a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                 <div class="panel-body">
                     <table class="table">
                         <thead>
