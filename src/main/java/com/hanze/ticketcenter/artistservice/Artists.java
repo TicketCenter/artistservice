@@ -18,7 +18,7 @@ public class Artists {
             @DefaultValue("") @QueryParam("page_size") String pageSize,
             @DefaultValue("") @QueryParam("page_number") String pageNumber) {
 
-        return this.artistsDAO.getArtists(characters, pageSize, pageNumber);
+        return artistsDAO.getArtists(characters, pageSize, pageNumber);
     }
 
     @GET
@@ -27,6 +27,6 @@ public class Artists {
     public String getArtist(
             @PathParam("name") String name) {
 
-        return this.artistsDAO.getArtist(name);
+        return artistsDAO.getArtist(name);
     }
 }

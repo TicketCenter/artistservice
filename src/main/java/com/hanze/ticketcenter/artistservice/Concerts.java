@@ -18,7 +18,7 @@ public class Concerts {
             @DefaultValue("") @QueryParam("page_size") String pageSize,
             @DefaultValue("") @QueryParam("page_number") String pageNumber) {
 
-        return this.concertsDAO.getConcerts(location, pageSize, pageNumber);
+        return concertsDAO.getConcerts(location, pageSize, pageNumber);
     }
 
     @GET
@@ -27,6 +27,6 @@ public class Concerts {
     public String getConcert(
             @PathParam("id") String id) {
 
-        return this.concertsDAO.getConcert(id);
+        return concertsDAO.getConcert(id);
     }
 }

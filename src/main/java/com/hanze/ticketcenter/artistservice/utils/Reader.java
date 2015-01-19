@@ -1,27 +1,34 @@
 package com.hanze.ticketcenter.artistservice.utils;
 
-import com.hanze.ticketcenter.artistservice.utils.api.APIReader;
+import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
-abstract public class Reader extends APIReader {
-    private String apiUrl;
-    private String apiKey;
-    private String apiFormat;
-
-    public String read(String resource, String method, Map parameters, List attributes) {
-        String url = this.buildUrl(resource, method, parameters);
-
+public class Reader {
+    public String read(String url) {
         try {
-            return this.readApi(url, attributes);
+            InputStream inputStream = new URL(url).openStream();
+
+            try {
+                return IOUtils.toString(inputStream);
+            } catch(IOException e) {
+                e.printStackTrace();
+            } finally {
+                IOUtils.closeQuietly(inputStream);
+            }
         } catch(IOException e) {
             e.printStackTrace();
         }
 
         return null;
+    }
+
+    public String buildUrl(String url, String resource, String method, Map parameters) {
+        return url + "/" + resource + "/" + method + "/" + buildUrlParameters(parameters);
     }
 
     public String buildUrlParameters(Map parameters) {
@@ -34,33 +41,5 @@ abstract public class Reader extends APIReader {
         }
 
         return newParameters;
-    }
-
-    public String buildUrl(String resource, String method, Map parameters) {
-        return this.getApiUrl() + "/" + this.getApiFormat() + "/" + resource + "/" + method + "?app_key=" + this.getApiKey() + this.buildUrlParameters(parameters);
-    }
-
-    public String getApiUrl() {
-        return apiUrl;
-    }
-
-    public void setApiUrl(String apiUrl) {
-        this.apiUrl = apiUrl;
-    }
-
-    public String getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
-
-    public String getApiFormat() {
-        return apiFormat;
-    }
-
-    public void setApiFormat(String apiFormat) {
-        this.apiFormat = apiFormat;
     }
 }
