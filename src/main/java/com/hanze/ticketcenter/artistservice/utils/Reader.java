@@ -13,7 +13,7 @@ abstract public class Reader extends APIReader {
     private String apiFormat;
 
     public String read(String resource, String method, Map parameters, List attributes) {
-        String url = this.buildUrl(resource, method, buildUrlParameters(parameters));
+        String url = this.buildUrl(resource, method, parameters);
 
         try {
             return this.readApi(url, attributes);
@@ -36,8 +36,8 @@ abstract public class Reader extends APIReader {
         return newParameters;
     }
 
-    public String buildUrl(String resource, String method, String parameters) {
-        return this.getApiUrl() + "/" + this.getApiFormat() + "/" + resource + "/" + method + "?app_key=" + this.getApiKey() + parameters;
+    public String buildUrl(String resource, String method, Map parameters) {
+        return this.getApiUrl() + "/" + this.getApiFormat() + "/" + resource + "/" + method + "?app_key=" + this.getApiKey() + this.buildUrlParameters(parameters);
     }
 
     public String getApiUrl() {

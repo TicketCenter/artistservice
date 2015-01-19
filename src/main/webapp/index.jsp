@@ -114,14 +114,14 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><a href="/api/artists" target="_blank">/api/concerts</a></td>
+                            <td><a href="/api/artists" target="_blank">/api/artists</a></td>
                             <td></td>
                             <td>Gets all artists (filtered on character <em>a</em> by default).</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><a href="/api/artists?character=a" target="_blank">character={character}</a></td>
-                            <td>Gets all artists filtered on a character.</td>
+                            <td><a href="/api/artists?characters=a" target="_blank">characters={characters}</a></td>
+                            <td>Gets all artists filtered on characters.</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -135,7 +135,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <p class="small"><em><strong>Example:</strong> <a href="/api/artists?character=a&page_size=10&page_number=1" target="_blank">/api/artists?character=a&page_size=10&page_number=1</a></em></p>
+                    <p class="small"><em><strong>Example:</strong> <a href="/api/artists?characters=a&page_size=10&page_number=1" target="_blank">/api/artists?characters=a&page_size=10&page_number=1</a></em></p>
                 </div>
             </div>
         </div>

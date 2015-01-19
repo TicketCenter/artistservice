@@ -1,17 +1,18 @@
 package com.hanze.ticketcenter.artistservice.dao;
 
 import com.hanze.ticketcenter.artistservice.dao.interfaces.ArtistsDAOInterface;
-import com.hanze.ticketcenter.artistservice.resources.LastfmAPI;
+import com.hanze.ticketcenter.artistservice.resources.LastFmmAPI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ArtistsDAO extends LastfmAPI implements ArtistsDAOInterface {
-    public String getArtists(String character, String pageSize, String pageNumber) {
+public class ArtistsDAO extends LastFmmAPI implements ArtistsDAOInterface {
+    @Override
+    public String getArtists(String characters, String pageSize, String pageNumber) {
         Map<String, String> parameters = new HashMap<>();
-        parameters.put("artist", character);
+        parameters.put("artist", characters);
         parameters.put("limit", pageSize);
         parameters.put("page", pageNumber);
 
@@ -21,6 +22,7 @@ public class ArtistsDAO extends LastfmAPI implements ArtistsDAOInterface {
         return this.read("artist", "search", parameters, attributes);
     }
 
+    @Override
     public String getArtist(String name) {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("artist", name);
