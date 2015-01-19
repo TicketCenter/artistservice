@@ -4,12 +4,12 @@ import com.hanze.ticketcenter.artistservice.utils.Reader;
 
 import java.util.Map;
 
-abstract public class LastFmmAPI extends Reader {
+abstract public class LastFmAPI extends Reader {
     private static final String API_URL = "http://ws.audioscrobbler.com/2.0/";
     private static final String API_KEY = "a2f47791b8c26629855c06b477ab06b4";
     private static final String API_FORMAT = "json";
 
-    public LastFmmAPI() {
+    public LastFmAPI() {
         this.setApiUrl(API_URL);
         this.setApiKey(API_KEY);
         this.setApiFormat(API_FORMAT);
