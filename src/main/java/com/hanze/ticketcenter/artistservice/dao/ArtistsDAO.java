@@ -10,21 +10,13 @@ public class ArtistsDAO implements ArtistsDAOInterface {
     public String getArtists(String characters, String pageSize, String pageNumber) {
         return artistsParser.parseArtists(characters, pageSize, pageNumber);
 
-        /* TODO: Read DTO
-        - Parse into a DTO variable
-        - Parse DTO into a JSON variable
-        - Return a JSON String
-         */
+        // TODO
     }
 
     @Override
     public String getArtist(String name) {
         return artistsParser.parseArtist(name);
 
-        /* TODO: Read DTO
-        - Parse into a DTO variable
-        - Parse DTO into a JSON variable
-        - Return a JSON String
-         */
+        // TODO
     }
 }

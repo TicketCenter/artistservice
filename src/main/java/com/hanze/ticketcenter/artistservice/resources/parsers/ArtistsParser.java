@@ -16,11 +16,7 @@ public class ArtistsParser {
 
         return lastFm.get("artist", "search", parameters);
 
-        /* TODO: Parse Artists
-        - Read JSON into a variable
-        - Parse JSON into a DTO
-        - Return a DTO
-         */
+        // TODO
     }
 
     public String parseArtist(String name) {
@@ -29,10 +25,6 @@ public class ArtistsParser {
 
         return lastFm.get("artist", "getinfo", parameters);
 
-        /* TODO: Parse Artist
-        - Read JSON into a variable
-        - Parse JSON into a DTO
-        - Return a DTO
-         */
+        // TODO
     }
 }
