@@ -33,6 +33,7 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th>HTTP verb</th>
                             <th>Source</th>
                             <th>Filter options</th>
                             <th>Description</th>
@@ -40,21 +41,25 @@
                         </thead>
                         <tbody>
                         <tr>
+                            <td><kbd>GET</kbd></td>
                             <td><a href="/api/concerts" target="_blank">/api/concerts</a></td>
                             <td></td>
                             <td>Gets all concerts.</td>
                         </tr>
                         <tr>
                             <td></td>
+                            <td></td>
                             <td><a href="/api/concerts?location=Netherlands" target="_blank">location={location}</a></td>
                             <td>Gets all concerts filtered on location.</td>
                         </tr>
                         <tr>
                             <td></td>
+                            <td></td>
                             <td><a href="/api/concerts?page_size=10" target="_blank">page_size={page_size}</a></td>
                             <td>Gets all concerts filtered on page size.</td>
                         </tr>
                         <tr>
+                            <td></td>
                             <td></td>
                             <td><a href="/api/concerts?page_number=1" target="_blank">page_number={page_number}</a></td>
                             <td>Gets all concerts filtered on page number</td>
@@ -77,12 +82,14 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th>HTTP verb</th>
                             <th>Source</th>
                             <th>Description</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
+                            <td><kbd>GET</kbd></td>
                             <td><a href="/api/concerts/E0-001-075694702-5" target="_blank">/api/concerts/{id}</a></td>
                             <td>Gets a specific concert.</td>
                         </tr>
@@ -107,6 +114,7 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th>HTTP verb</th>
                             <th>Source</th>
                             <th>Filter options</th>
                             <th>Description</th>
@@ -114,21 +122,25 @@
                         </thead>
                         <tbody>
                         <tr>
+                            <td><kbd>GET</kbd></td>
                             <td><a href="/api/artists" target="_blank">/api/artists</a></td>
                             <td></td>
                             <td>Gets all artists (filtered on character <em>a</em> by default).</td>
                         </tr>
                         <tr>
                             <td></td>
+                            <td></td>
                             <td><a href="/api/artists?characters=a" target="_blank">characters={characters}</a></td>
                             <td>Gets all artists filtered on characters.</td>
                         </tr>
                         <tr>
                             <td></td>
+                            <td></td>
                             <td><a href="/api/artists?page_size=10" target="_blank">page_size={page_size}</a></td>
                             <td>Gets all artists filtered on page size.</td>
                         </tr>
                         <tr>
+                            <td></td>
                             <td></td>
                             <td><a href="/api/artists?page_number=1" target="_blank">page_number={page_number}</a></td>
                             <td>Gets all artists filtered on page number</td>
@@ -150,12 +162,14 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th>HTTP verb</th>
                             <th>Source</th>
                             <th>Description</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
+                            <td><kbd>GET</kbd></td>
                             <td><a href="/api/artists/Cher" target="_blank">/api/artists/{name}</a></td>
                             <td>Gets a specific artist.</td>
                         </tr>
