@@ -27,10 +27,6 @@ public class Reader {
         return null;
     }
 
-    public String buildUrl(String url, String resource, String method, Map parameters) {
-        return url + "/" + resource + "/" + method + "/" + buildUrlParameters(parameters);
-    }
-
     public String buildUrlParameters(Map parameters) {
         Iterator iterator = parameters.entrySet().iterator();
         String newParameters = "";

@@ -15,8 +15,8 @@ public class Artists {
     @Produces(MediaType.APPLICATION_JSON)
     public String getArtists(
             @DefaultValue("a") @QueryParam("characters") String characters,
-            @DefaultValue("") @QueryParam("page_size") String pageSize,
-            @DefaultValue("") @QueryParam("page_number") String pageNumber) {
+            @DefaultValue("10") @QueryParam("page_size") String pageSize,
+            @DefaultValue("1") @QueryParam("page_number") String pageNumber) {
 
         return artistsDAO.getArtists(characters, pageSize, pageNumber);
     }

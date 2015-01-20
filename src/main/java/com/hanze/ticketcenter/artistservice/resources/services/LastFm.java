@@ -9,12 +9,7 @@ public class LastFm extends Reader {
     private static final String API_KEY = "a2f47791b8c26629855c06b477ab06b4";
     private static final String API_FORMAT = "json";
 
-    public String buildUrl(String resource, String method, Map parameters) {
-        return buildUrl(API_URL, resource, method, parameters);
-    }
-
-    @Override
-    public String buildUrl(String url, String resource, String method, Map parameters) {
-        return url + "/" + "?api_key=" + API_KEY + "&format=" + API_FORMAT + "&method=" + resource + "." + method + buildUrlParameters(parameters);
+    public String get(String resource, String method, Map parameters) {
+        return read(API_URL + "/" + "?api_key=" + API_KEY + "&format=" + API_FORMAT + "&method=" + resource + "." + method + buildUrlParameters(parameters));
     }
 }

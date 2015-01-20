@@ -5,14 +5,16 @@ import com.hanze.ticketcenter.artistservice.resources.services.LastFm;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ArtistsParser extends LastFm {
+public class ArtistsParser {
+    private LastFm lastFm = new LastFm();
+
     public String parseArtists(String characters, String pageSize, String pageNumber) {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("artist", characters);
         parameters.put("limit", pageSize);
         parameters.put("page", pageNumber);
 
-        return read(buildUrl("artist", "search", parameters));
+        return lastFm.get("artist", "search", parameters);
 
         /* TODO: Parse Artists
         - Read JSON into a variable
@@ -25,7 +27,7 @@ public class ArtistsParser extends LastFm {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("artist", name);
 
-        return read(buildUrl("artist", "getinfo", parameters));
+        return lastFm.get("artist", "getinfo", parameters);
 
         /* TODO: Parse Artist
         - Read JSON into a variable

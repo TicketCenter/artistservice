@@ -1,39 +1,54 @@
 package com.hanze.ticketcenter.artistservice.dao;
 
 import com.hanze.ticketcenter.artistservice.dao.interfaces.ConcertsDAOInterface;
-import com.hanze.ticketcenter.artistservice.resources.parsers.ConcertsParser;
+import com.hanze.ticketcenter.artistservice.dto.ConcertsDTO;
+import com.hanze.ticketcenter.artistservice.resources.ConcertsResource;
+import org.json.simple.JSONValue;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class ConcertsDAO implements ConcertsDAOInterface {
-    private ConcertsParser concertsParser = new ConcertsParser();
+    private ConcertsResource concertsResource = new ConcertsResource();
 
     @Override
     public String getConcerts(String location, String pageSize, String pageNumber) {
-        return concertsParser.parseConcerts(location, pageSize, pageNumber);
+        ConcertsDTO concertsDTO = concertsResource.getConcertsResource(location, pageSize, pageNumber);
+        Map<String, Object> concertsMap = new LinkedHashMap<>();
 
-        /* TODO: Read DTO
-        - Parse into a DTO variable
-        - Parse DTO into a JSON variable
-        - Return a JSON String
-         */
+        if(concertsDTO.getTotalItems() != 0) {
+            concertsMap.put("status", 200);
+            concertsMap.put("message", "OK");
+            concertsMap.put("total_items", concertsDTO.getTotalItems());
+            concertsMap.put("page_size", concertsDTO.getPageSize());
+            concertsMap.put("page_number", concertsDTO.getPageNumber());
+            concertsMap.put("page_count", concertsDTO.getPageCount());
+            concertsMap.put("search_time", concertsDTO.getSearchTime());
+            concertsMap.put("concerts", concertsDTO.getConcerts());
+        } else {
+            concertsMap.put("status", 404);
+            concertsMap.put("message", "Not Found");
+            concertsMap.put("description", "There are no concerts found.");
+        }
 
-        /* DEMO:
-        ConcertsDTO concertsDTO = concertsParser.parseConcerts(location, pageSize, pageNumber);
-        Map concerts = new LinkedHashMap();
-        concerts.put("country_name", concertsDTO.getCountryName());
-        concerts.put("events", concertsDTO.getEvents());
-
-        return JSONValue.toJSONString(concerts);
-         */
+        return JSONValue.toJSONString(concertsMap);
     }
 
     @Override
     public String getConcert(String id) {
-        return concertsParser.parseConcert(id);
+        ConcertsDTO concertsDTO = concertsResource.getConcertResource(id);
+        Map<String, Object> concertMap = new LinkedHashMap<>();
 
-        /* TODO: Read DTO
-        - Parse into a DTO variable
-        - Parse DTO into a JSON variable
-        - Return a JSON String
-         */
+        if(concertsDTO.getConcerts() != null) {
+            concertMap.put("status", 200);
+            concertMap.put("message", "OK");
+            concertMap.put("concert", concertsDTO.getConcerts());
+        } else {
+            concertMap.put("status", 404);
+            concertMap.put("message", "Not Found");
+            concertMap.put("description", "Concert not found.");
+        }
+
+        return JSONValue.toJSONString(concertMap);
     }
 }

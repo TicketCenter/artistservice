@@ -6,7 +6,7 @@ public class ConcertsDTO {
     private Integer pageNumber;
     private Integer pageCount;
     private Double searchTime;
-    private Object events;
+    private Object concerts;
 
     public Integer getTotalItems() {
         return totalItems;
@@ -48,11 +48,11 @@ public class ConcertsDTO {
         this.searchTime = searchTime;
     }
 
-    public Object getEvents() {
-        return events;
+    public Object getConcerts() {
+        return concerts;
     }
 
-    public void setEvents(Object events) {
-        this.events = events;
+    public void setConcerts(Object concerts) {
+        this.concerts = concerts;
     }
 }
