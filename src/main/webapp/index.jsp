@@ -30,42 +30,44 @@
             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
                     <p>An overview of the source. Filters can be combined.</p>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>HTTP verb</th>
-                            <th>Source</th>
-                            <th>Filter options</th>
-                            <th>Description</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><kbd>GET</kbd></td>
-                            <td><a href="/api/concerts" target="_blank">/api/concerts</a></td>
-                            <td></td>
-                            <td>Gets all concerts.</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><a href="/api/concerts?location=Netherlands" target="_blank">location={location}</a></td>
-                            <td>Gets all concerts filtered on location.</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><a href="/api/concerts?page_size=10" target="_blank">page_size={page_size}</a></td>
-                            <td>Gets all concerts filtered on page size.</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><a href="/api/concerts?page_number=1" target="_blank">page_number={page_number}</a></td>
-                            <td>Gets all concerts filtered on page number</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>HTTP verb</th>
+                                <th>Source</th>
+                                <th>Filter options</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><kbd>GET</kbd></td>
+                                <td><a href="/api/concerts" target="_blank">/api/concerts</a></td>
+                                <td></td>
+                                <td>Gets all concerts.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td><a href="/api/concerts?location=Netherlands" target="_blank">location={location}</a></td>
+                                <td>Gets all concerts filtered on location.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td><a href="/api/concerts?page_size=10" target="_blank">page_size={page_size}</a></td>
+                                <td>Gets all concerts filtered on page size.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td><a href="/api/concerts?page_number=1" target="_blank">page_number={page_number}</a></td>
+                                <td>Gets all concerts filtered on page number</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <p class="small"><em><strong>Example:</strong> <a href="/api/concerts?location=Netherlands&page_size=10&page_number=1" target="_blank">/api/concerts?location=Netherlands&page_size=10&page_number=1</a></em></p>
                 </div>
             </div>
@@ -79,22 +81,24 @@
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
                     <p>An overview of the source. Filters can be combined.</p>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>HTTP verb</th>
-                            <th>Source</th>
-                            <th>Description</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><kbd>GET</kbd></td>
-                            <td><a href="/api/concerts/E0-001-075694702-5" target="_blank">/api/concerts/{id}</a></td>
-                            <td>Gets a specific concert.</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>HTTP verb</th>
+                                <th>Source</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><kbd>GET</kbd></td>
+                                <td><a href="/api/concerts/E0-001-075694702-5" target="_blank">/api/concerts/{id}</a></td>
+                                <td>Gets a specific concert.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <p class="small"><em><strong>Example:</strong> <a href="api/concerts/E0-001-075694702-5" target="_blank">/api/concerts/E0-001-075694702-5</a></em></p>
                 </div>
             </div>
@@ -111,42 +115,44 @@
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                 <div class="panel-body">
                     <p>An overview of the source. Filters can be combined.</p>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>HTTP verb</th>
-                            <th>Source</th>
-                            <th>Filter options</th>
-                            <th>Description</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><kbd>GET</kbd></td>
-                            <td><a href="/api/artists" target="_blank">/api/artists</a></td>
-                            <td></td>
-                            <td>Gets all artists (filtered on character <em>a</em> by default).</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><a href="/api/artists?characters=a" target="_blank">characters={characters}</a></td>
-                            <td>Gets all artists filtered on characters.</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><a href="/api/artists?page_size=10" target="_blank">page_size={page_size}</a></td>
-                            <td>Gets all artists filtered on page size.</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><a href="/api/artists?page_number=1" target="_blank">page_number={page_number}</a></td>
-                            <td>Gets all artists filtered on page number</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>HTTP verb</th>
+                                <th>Source</th>
+                                <th>Filter options</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><kbd>GET</kbd></td>
+                                <td><a href="/api/artists" target="_blank">/api/artists</a></td>
+                                <td></td>
+                                <td>Gets all artists (filtered on character <em>a</em> by default).</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td><a href="/api/artists?characters=a" target="_blank">characters={characters}</a></td>
+                                <td>Gets all artists filtered on characters.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td><a href="/api/artists?page_size=10" target="_blank">page_size={page_size}</a></td>
+                                <td>Gets all artists filtered on page size.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td><a href="/api/artists?page_number=1" target="_blank">page_number={page_number}</a></td>
+                                <td>Gets all artists filtered on page number</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <p class="small"><em><strong>Example:</strong> <a href="/api/artists?characters=a&page_size=10&page_number=1" target="_blank">/api/artists?characters=a&page_size=10&page_number=1</a></em></p>
                 </div>
             </div>
@@ -159,22 +165,24 @@
             </div>
             <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                 <div class="panel-body">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>HTTP verb</th>
-                            <th>Source</th>
-                            <th>Description</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><kbd>GET</kbd></td>
-                            <td><a href="/api/artists/Cher" target="_blank">/api/artists/{name}</a></td>
-                            <td>Gets a specific artist.</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>HTTP verb</th>
+                                <th>Source</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><kbd>GET</kbd></td>
+                                <td><a href="/api/artists/Cher" target="_blank">/api/artists/{name}</a></td>
+                                <td>Gets a specific artist.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     <p class="small"><em><strong>Example:</strong> <a href="/api/artists/Cher" target="_blank">/api/artists/Cher</a></em></p>
                 </div>
             </div>
