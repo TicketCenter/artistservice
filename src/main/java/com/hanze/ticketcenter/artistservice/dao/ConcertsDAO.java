@@ -9,14 +9,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ConcertsDAO implements ConcertsDAOInterface {
-    private ConcertsResource concertsResource = new ConcertsResource();
+    private final ConcertsResource concertsResource = new ConcertsResource();
 
     @Override
     public String getConcerts(String location, String pageSize, String pageNumber) {
         ConcertsDTO concertsDTO = concertsResource.getConcertsResource(location, pageSize, pageNumber);
         Map<String, Object> concertsMap = new LinkedHashMap<>();
 
-        if(concertsDTO.getTotalItems() != 0) {
+        if(concertsDTO.getTotalItems() != null) {
             concertsMap.put("status", 200);
             concertsMap.put("message", "OK");
             concertsMap.put("total_items", concertsDTO.getTotalItems());

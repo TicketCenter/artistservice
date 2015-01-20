@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress JSUnresolvedLibraryURL, JspAbsolutePathInspection -->
 <html>
 <head>
     <title>Artists Service API</title>
@@ -43,7 +44,8 @@
                             <tbody>
                             <tr>
                                 <td><kbd>GET</kbd></td>
-                                <td><a href="/api/concerts" target="_blank">/api/concerts</a></td>
+                                <td>
+                                    <a href="/api/concerts" target="_blank">/api/concerts</a></td>
                                 <td></td>
                                 <td>Gets all concerts.</td>
                             </tr>

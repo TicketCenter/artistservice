@@ -4,7 +4,7 @@ import com.hanze.ticketcenter.artistservice.dao.interfaces.ArtistsDAOInterface;
 import com.hanze.ticketcenter.artistservice.resources.parsers.ArtistsParser;
 
 public class ArtistsDAO implements ArtistsDAOInterface {
-    private ArtistsParser artistsParser = new ArtistsParser();
+    private final ArtistsParser artistsParser = new ArtistsParser();
 
     @Override
     public String getArtists(String characters, String pageSize, String pageNumber) {

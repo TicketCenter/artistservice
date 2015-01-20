@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.Map;
 
+@SuppressWarnings("WeakerAccess")
 public class Reader {
     public String read(String url) {
         try {

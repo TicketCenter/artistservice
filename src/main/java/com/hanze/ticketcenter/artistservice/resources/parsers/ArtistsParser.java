@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ArtistsParser {
-    private LastFm lastFm = new LastFm();
+    private final LastFm lastFm = new LastFm();
 
     public String parseArtists(String characters, String pageSize, String pageNumber) {
         Map<String, String> parameters = new HashMap<>();

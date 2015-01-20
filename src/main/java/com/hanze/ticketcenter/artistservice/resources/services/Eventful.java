@@ -9,6 +9,7 @@ public class Eventful extends Reader {
     private static final String API_KEY = "JFfNZghvjMLmbzh2";
     private static final String API_FORMAT = "json";
 
+    @SuppressWarnings("SameParameterValue")
     public String get(String resource, String method, Map parameters) {
         return read(API_URL + "/" + API_FORMAT + "/" + resource + "/" + method + "?app_key=" + API_KEY + buildUrlParameters(parameters));
     }

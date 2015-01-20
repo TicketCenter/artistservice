@@ -6,10 +6,11 @@ import javax.annotation.Resource;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+@SuppressWarnings("WeakerAccess")
 @Path("artists")
 public class Artists {
     @Resource
-    private ArtistsDAO artistsDAO = new ArtistsDAO();
+    private final ArtistsDAO artistsDAO = new ArtistsDAO();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

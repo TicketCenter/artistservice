@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConcertsResource {
-    private Eventful eventful = new Eventful();
-    private ConcertsParser concertsParser = new ConcertsParser();
+    private final Eventful eventful = new Eventful();
+    private final ConcertsParser concertsParser = new ConcertsParser();
 
     public ConcertsDTO getConcertsResource(String location, String pageSize, String pageNumber) {
         Map<String, String> parameters = new HashMap<>();

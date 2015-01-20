@@ -16,7 +16,7 @@ public class ConcertsParser {
         try {
             JSONObject oldConcerts = (JSONObject) new JSONParser().parse(concerts);
 
-            if(oldConcerts.get("total_items") == null) {
+            if(oldConcerts.get("total_items") != null) {
                 concertsDTO.setTotalItems(Integer.parseInt((String) oldConcerts.get("total_items")));
                 concertsDTO.setPageSize(Integer.parseInt((String) oldConcerts.get("page_size")));
                 concertsDTO.setPageNumber(Integer.parseInt((String) oldConcerts.get("page_number")));
@@ -47,35 +47,34 @@ public class ConcertsParser {
         return concertsDTO;
     }
 
-    private Object parseEvents(JSONObject oldEvents) {
+    private Map parseEvents(JSONObject oldEvents) {
+        Map<String, List> newConcerts = new LinkedHashMap<>();
+
         if(oldEvents != null) {
             Object event = oldEvents.get("event");
             List<Map> newConcertsList = new LinkedList<>();
 
-            if (event instanceof JSONObject) {
+            if(event instanceof JSONObject) {
                 JSONObject eventJsonObject = (JSONObject) event;
                 newConcertsList.add(parseConcertsEvent(eventJsonObject));
-            } else if (event instanceof JSONArray) {
+            } else if(event instanceof JSONArray) {
                 JSONArray eventJsonArray = (JSONArray) event;
-                Iterator<JSONObject> iterator = eventJsonArray.iterator();
 
-                while (iterator.hasNext()) {
-                    newConcertsList.add(parseConcertsEvent(iterator.next()));
+                for(Object eventJsonObject : eventJsonArray) {
+                    newConcertsList.add(parseConcertsEvent((JSONObject) eventJsonObject));
                 }
             }
 
-            JSONObject newConcerts = new JSONObject();
             newConcerts.put("concert", newConcertsList);
-
-            return newConcerts;
-        } else {
-            return null;
         }
+
+        return newConcerts;
     }
 
     private Map parseConcertsEvent(JSONObject oldConcert) {
+        Map<String, Object> newConcert = new LinkedHashMap<>();
+
         if(oldConcert != null) {
-            Map<String, Object> newConcert = new LinkedHashMap<>();
             newConcert.put("id", oldConcert.get("id"));
             newConcert.put("title", oldConcert.get("title"));
             newConcert.put("description", oldConcert.get("description"));
@@ -87,16 +86,15 @@ public class ConcertsParser {
             newConcert.put("stop_time", oldConcert.get("stop_time"));
             newConcert.put("tickets_available", parseTicketsAvailable((String) oldConcert.get("longitude")));
             newConcert.put("price", parsePrice((String) oldConcert.get("latitude")));
-
-            return newConcert;
-        } else {
-            return null;
         }
+
+        return newConcert;
     }
 
     private Map parseConcertEvent(JSONObject oldConcert) {
+        Map<String, Object> newConcert = new LinkedHashMap<>();
+
         if(oldConcert != null) {
-            Map<String, Object> newConcert = new LinkedHashMap<>();
             newConcert.put("id", oldConcert.get("id"));
             newConcert.put("title", oldConcert.get("title"));
             newConcert.put("description", oldConcert.get("description"));
@@ -108,49 +106,44 @@ public class ConcertsParser {
             newConcert.put("stop_time", oldConcert.get("stop_time"));
             newConcert.put("tickets_available", parseTicketsAvailable((String) oldConcert.get("longitude")));
             newConcert.put("price", parsePrice((String) oldConcert.get("latitude")));
-
-            return newConcert;
-        } else {
-            return null;
         }
+
+        return newConcert;
     }
 
-    private Object parsePerformers(JSONObject oldPerformers) {
+    private Map parsePerformers(JSONObject oldPerformers) {
+        Map<String, List> newPerformers = new LinkedHashMap<>();
+
         if(oldPerformers != null) {
             Object performer = oldPerformers.get("performer");
             List<Map> netPerformersList = new LinkedList<>();
 
-            if (performer instanceof JSONObject) {
+            if(performer instanceof JSONObject) {
                 JSONObject eventJsonObject = (JSONObject) performer;
                 netPerformersList.add(parsePerformer(eventJsonObject));
-            } else if (performer instanceof JSONArray) {
+            } else if(performer instanceof JSONArray) {
                 JSONArray eventJsonArray = (JSONArray) performer;
-                Iterator<JSONObject> iterator = eventJsonArray.iterator();
 
-                while (iterator.hasNext()) {
-                    netPerformersList.add(parsePerformer(iterator.next()));
+                for(Object eventJsonObject : eventJsonArray) {
+                    netPerformersList.add(parsePerformer((JSONObject) eventJsonObject));
                 }
             }
 
-            JSONObject newPerformers = new JSONObject();
-            newPerformers.put("performer", netPerformersList);
-
-            return newPerformers;
-        } else {
-            return null;
+            newPerformers.put("concert", netPerformersList);
         }
+
+        return newPerformers;
     }
 
     private Map parsePerformer(JSONObject oldPerformer) {
+        Map<String, Object> newPerformer = new LinkedHashMap<>();
+
         if(oldPerformer != null) {
-            Map<String, Object> newPerformer = new LinkedHashMap<>();
             newPerformer.put("name", oldPerformer.get("name"));
             newPerformer.put("short_bio", oldPerformer.get("short_bio"));
-
-            return newPerformer;
-        } else {
-            return null;
         }
+
+        return newPerformer;
     }
 
     private Integer parseTicketsAvailable(String longitude) {
