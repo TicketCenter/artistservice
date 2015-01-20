@@ -16,7 +16,7 @@ public class ConcertsDAO implements ConcertsDAOInterface {
         ConcertsDTO concertsDTO = concertsResource.getConcertsResource(location, pageSize, pageNumber);
         Map<String, Object> concertsMap = new LinkedHashMap<>();
 
-        if(concertsDTO.getTotalItems() != null) {
+        if(concertsDTO.getTotalItems() != 0) {
             concertsMap.put("status", 200);
             concertsMap.put("message", "OK");
             concertsMap.put("total_items", concertsDTO.getTotalItems());
