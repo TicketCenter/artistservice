@@ -16,7 +16,7 @@ public class ConcertsParser {
         try {
             JSONObject oldConcerts = (JSONObject) new JSONParser().parse(concerts);
 
-            if(oldConcerts.get("total_items") != null) {
+            if(!oldConcerts.get("total_items").equals("0")) {
                 concertsDTO.setTotalItems(Integer.parseInt((String) oldConcerts.get("total_items")));
                 concertsDTO.setPageSize(Integer.parseInt((String) oldConcerts.get("page_size")));
                 concertsDTO.setPageNumber(Integer.parseInt((String) oldConcerts.get("page_number")));

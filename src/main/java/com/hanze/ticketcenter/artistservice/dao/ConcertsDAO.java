@@ -5,18 +5,20 @@ import com.hanze.ticketcenter.artistservice.dto.ConcertsDTO;
 import com.hanze.ticketcenter.artistservice.resources.ConcertsResource;
 import org.json.simple.JSONValue;
 
+import javax.annotation.Resource;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ConcertsDAO implements ConcertsDAOInterface {
+    @Resource
     private final ConcertsResource concertsResource = new ConcertsResource();
 
     @Override
-    public String getConcerts(String location, String pageSize, String pageNumber) {
+    public String getConcerts(String location, Integer pageSize, Integer pageNumber) {
         ConcertsDTO concertsDTO = concertsResource.getConcertsResource(location, pageSize, pageNumber);
         Map<String, Object> concertsMap = new LinkedHashMap<>();
 
-        if(concertsDTO.getTotalItems() != 0) {
+        if(concertsDTO.getConcerts() != null) {
             concertsMap.put("status", 200);
             concertsMap.put("message", "OK");
             concertsMap.put("total_items", concertsDTO.getTotalItems());

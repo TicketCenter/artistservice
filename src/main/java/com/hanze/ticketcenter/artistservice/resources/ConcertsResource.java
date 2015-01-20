@@ -11,8 +11,8 @@ public class ConcertsResource {
     private final Eventful eventful = new Eventful();
     private final ConcertsParser concertsParser = new ConcertsParser();
 
-    public ConcertsDTO getConcertsResource(String location, String pageSize, String pageNumber) {
-        Map<String, String> parameters = new HashMap<>();
+    public ConcertsDTO getConcertsResource(String location, Integer pageSize, Integer pageNumber) {
+        Map<String, Object> parameters = new HashMap<>();
         parameters.put("category", "music");
         parameters.put("location", location);
         parameters.put("page_size", pageSize);
