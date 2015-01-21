@@ -1,6 +1,6 @@
 package com.hanze.ticketcenter.artistservice.resources.services;
 
-import com.hanze.ticketcenter.artistservice.resources.utils.Reader;
+import com.hanze.ticketcenter.artistservice.resources.services.utils.Reader;
 
 import java.util.Map;
 

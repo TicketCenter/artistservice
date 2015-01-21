@@ -1,4 +1,4 @@
-package com.hanze.ticketcenter.artistservice.resources.utils;
+package com.hanze.ticketcenter.artistservice.resources.services.utils;
 
 import org.apache.commons.io.IOUtils;
 
