@@ -242,7 +242,7 @@ public class ConcertsParser {
             if(split.length == 2) {
                 price = Double.parseDouble(split[1]) / 20000;
 
-                if (price <= 10) {
+                if(price <= 10) {
                     price += 10;
                 }
 
