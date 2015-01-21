@@ -1,0 +1,8 @@
+com.hanze.ticketcenter.artistservice
+com.hanze.ticketcenter.artistservice.dao
+com.hanze.ticketcenter.artistservice.dao.interfaces
+com.hanze.ticketcenter.artistservice.dto
+com.hanze.ticketcenter.artistservice.resources
+com.hanze.ticketcenter.artistservice.resources.parsers
+com.hanze.ticketcenter.artistservice.resources.services
+com.hanze.ticketcenter.artistservice.resources.services.utils
