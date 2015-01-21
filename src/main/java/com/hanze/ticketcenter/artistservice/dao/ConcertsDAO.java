@@ -9,10 +9,31 @@ import javax.annotation.Resource;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * The concerts DAO.
+ *
+ * @author      Nils
+ * @version     1.0
+ * @since       1.0
+ */
 public class ConcertsDAO implements ConcertsDAOInterface {
+    /**
+     * The concerts resource
+     *
+     * @see com.hanze.ticketcenter.artistservice.resources.ConcertsResource
+     */
     @Resource(name="ConcertsResource")
     private final ConcertsResource concertsResource = new ConcertsResource();
 
+    /**
+     * Get all the concerts from the concerts resource.
+     *
+     * @param location      The location to filter.
+     * @param pageSize      The amount of concerts to display.
+     * @param pageNumber    The current page.
+     * @return              All the concerts.
+     * @see                 #concertsResource#getConcerts(String, Integer, Integer)
+     */
     @Override
     public String getConcerts(String location, Integer pageSize, Integer pageNumber) {
         ConcertsDTO concertsDTO = concertsResource.getConcertsResource(location, pageSize, pageNumber);
@@ -35,6 +56,13 @@ public class ConcertsDAO implements ConcertsDAOInterface {
         return JSONValue.toJSONString(concertsMap);
     }
 
+    /**
+     * Get a concert from the concerts resource.
+     *
+     * @param id            The id of the concert.
+     * @return              A concert.
+     * @see                 #concertsResource#getConcert(String)
+     */
     @Override
     public String getConcert(String id) {
         ConcertsDTO concertsDTO = concertsResource.getConcertResource(id);

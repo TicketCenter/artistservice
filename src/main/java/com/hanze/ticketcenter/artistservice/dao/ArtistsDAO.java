@@ -9,10 +9,31 @@ import javax.annotation.Resource;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * The artists DAO.
+ *
+ * @author      Nils
+ * @version     1.0
+ * @since       1.0
+ */
 public class ArtistsDAO implements ArtistsDAOInterface {
+    /**
+     * The artists resource.
+     *
+     * @see com.hanze.ticketcenter.artistservice.resources.ArtistsResource
+     */
     @Resource(name="ArtistsResource")
     private final ArtistsResource artistsResource = new ArtistsResource();
 
+    /**
+     * Get all the artists from the artists resource.
+     *
+     * @param characters    The characters to filter.
+     * @param pageSize      The amount of concerts to display.
+     * @param pageNumber    The current page.
+     * @return              All the artists.
+     * @see                 #artistsResource#getArtists(String, Integer, Integer)
+     */
     @Override
     public String getArtists(String characters, Integer pageSize, Integer pageNumber) {
         ArtistsDTO artistsDTO = artistsResource.getArtistsResource(characters, pageSize, pageNumber);
@@ -35,6 +56,13 @@ public class ArtistsDAO implements ArtistsDAOInterface {
         return JSONValue.toJSONString(artistsMap);
     }
 
+    /**
+     * Get a artist from the artists DAO.
+     *
+     * @param name          The name of the artist.
+     * @return              A artist.
+     * @see                 #artistsResource#getArtist(String)
+     */
     @Override
     public String getArtist(String name) {
         ArtistsDTO artistsDTO = artistsResource.getArtistResource(name);

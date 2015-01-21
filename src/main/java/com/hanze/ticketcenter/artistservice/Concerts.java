@@ -6,12 +6,33 @@ import javax.annotation.Resource;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * The concerts resource.
+ *
+ * @author      Nils
+ * @version     1.0
+ * @since       1.0
+ */
 @SuppressWarnings("WeakerAccess")
 @Path("concerts")
 public class Concerts {
+    /**
+     * The concerts DAO.
+     *
+     * @see com.hanze.ticketcenter.artistservice.dao.ConcertsDAO
+     */
     @Resource
     private final ConcertsDAO concertsDAO = new ConcertsDAO();
 
+    /**
+     * Get all the concerts from the Concerts DAO.
+     *
+     * @param location      The location to filter.
+     * @param pageSize      The amount of concerts to display.
+     * @param pageNumber    The current page.
+     * @return              All the concerts.
+     * @see                 #concertsDAO#getConcerts(String, Integer, Integer)
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getConcerts(
@@ -22,6 +43,13 @@ public class Concerts {
         return concertsDAO.getConcerts(location, pageSize, pageNumber);
     }
 
+    /**
+     * Get a concert from the concerts DAO.
+     *
+     * @param id            The id of the concert.
+     * @return              A concert.
+     * @see                 #concertsDAO#getConcert(String)
+     */
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
