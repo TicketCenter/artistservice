@@ -98,7 +98,7 @@ public class ArtistsParser {
         return newArtist;
     }
 
-    public Integer parsePageCount(String totalItems, String pageNumber) {
+    private Integer parsePageCount(String totalItems, String pageNumber) {
         return Integer.parseInt(totalItems) / Integer.parseInt(pageNumber);
     }
 }
