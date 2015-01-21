@@ -74,7 +74,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p class="small"><em><strong>Example:</strong> <a href="/api/concerts?api_key=...&location=Netherlands&page_size=10&page_number=1" target="_blank">/api/concerts?api_key={api_key}&location=Netherlands&page_size=10&page_number=1</a></em></p>
+                    <p class="small"><em><strong>Example:</strong> <a href="/api/concerts?api_key={api_key}&location=Netherlands&page_size=10&page_number=1" target="_blank">/api/concerts?api_key={api_key}&location=Netherlands&page_size=10&page_number=1</a></em></p>
                 </div>
             </div>
         </div>
