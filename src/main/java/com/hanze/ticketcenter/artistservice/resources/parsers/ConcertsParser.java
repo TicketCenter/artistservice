@@ -84,7 +84,7 @@ public class ConcertsParser {
             newConcert.put("start_time", oldConcert.get("start_time"));
             newConcert.put("stop_time", oldConcert.get("stop_time"));
             newConcert.put("tickets_available", parseTicketsAvailable((String) oldConcert.get("longitude")));
-            newConcert.put("price", parsePrice((String) oldConcert.get("latitude")));
+            newConcert.put("ticket_price", parsePrice((String) oldConcert.get("latitude")));
         }
 
         return newConcert;
@@ -104,7 +104,7 @@ public class ConcertsParser {
             newConcert.put("start_time", oldConcert.get("start_time"));
             newConcert.put("stop_time", oldConcert.get("stop_time"));
             newConcert.put("tickets_available", parseTicketsAvailable((String) oldConcert.get("longitude")));
-            newConcert.put("price", parsePrice((String) oldConcert.get("latitude")));
+            newConcert.put("ticket_price", parsePrice((String) oldConcert.get("latitude")));
         }
 
         return newConcert;
