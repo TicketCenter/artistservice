@@ -37,6 +37,7 @@
                             <tr>
                                 <th>HTTP verb</th>
                                 <th>Source</th>
+                                <th>API key</th>
                                 <th>Filter options</th>
                                 <th>Description</th>
                             </tr>
@@ -44,33 +45,36 @@
                             <tbody>
                             <tr>
                                 <td><kbd>GET</kbd></td>
-                                <td>
-                                    <a href="/api/concerts" target="_blank">/api/concerts</a></td>
+                                <td><a href="/api/concerts?api_key={api_key}" target="_blank">/api/concerts</a></td>
+                                <td><a href="/api/concerts?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
                                 <td></td>
                                 <td>Gets all concerts.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/concerts?location=Netherlands" target="_blank">location={location}</a></td>
+                                <td></td>
+                                <td><a href="/api/concerts?api_key={api_key}&location=Netherlands" target="_blank">location={location}</a></td>
                                 <td>Gets all concerts filtered on location.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/concerts?page_size=10" target="_blank">page_size={page_size}</a></td>
+                                <td></td>
+                                <td><a href="/api/concerts?api_key={api_key}&page_size=10" target="_blank">page_size={page_size}</a></td>
                                 <td>Gets all concerts filtered on page size.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/concerts?page_number=1" target="_blank">page_number={page_number}</a></td>
+                                <td></td>
+                                <td><a href="/api/concerts?api_key={api_key}&page_number=1" target="_blank">page_number={page_number}</a></td>
                                 <td>Gets all concerts filtered on page number</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <p class="small"><em><strong>Example:</strong> <a href="/api/concerts?location=Netherlands&page_size=10&page_number=1" target="_blank">/api/concerts?location=Netherlands&page_size=10&page_number=1</a></em></p>
+                    <p class="small"><em><strong>Example:</strong> <a href="/api/concerts?api_key=...&location=Netherlands&page_size=10&page_number=1" target="_blank">/api/concerts?api_key={api_key}&location=Netherlands&page_size=10&page_number=1</a></em></p>
                 </div>
             </div>
         </div>
@@ -89,19 +93,21 @@
                             <tr>
                                 <th>HTTP verb</th>
                                 <th>Source</th>
+                                <th>API key</th>
                                 <th>Description</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td><kbd>GET</kbd></td>
-                                <td><a href="/api/concerts/E0-001-075694702-5" target="_blank">/api/concerts/{id}</a></td>
+                                <td><a href="/api/concerts/E0-001-075694702-5?api_key={api_key}" target="_blank">/api/concerts/{id}</a></td>
+                                <td><a href="/api/concerts/E0-001-075694702-5?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
                                 <td>Gets a specific concert.</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <p class="small"><em><strong>Example:</strong> <a href="api/concerts/E0-001-075694702-5" target="_blank">/api/concerts/E0-001-075694702-5</a></em></p>
+                    <p class="small"><em><strong>Example:</strong> <a href="api/concerts/E0-001-075694702-5?api_key={api_key}" target="_blank">/api/concerts/E0-001-075694702-5?api_key={api_key}</a></em></p>
                 </div>
             </div>
         </div>
@@ -123,6 +129,7 @@
                             <tr>
                                 <th>HTTP verb</th>
                                 <th>Source</th>
+                                <th>API key</th>
                                 <th>Filter options</th>
                                 <th>Description</th>
                             </tr>
@@ -130,32 +137,36 @@
                             <tbody>
                             <tr>
                                 <td><kbd>GET</kbd></td>
-                                <td><a href="/api/artists" target="_blank">/api/artists</a></td>
+                                <td><a href="/api/artists?api_key={api_key}" target="_blank">/api/artists</a></td>
+                                <td><a href="/api/artists?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
                                 <td></td>
                                 <td>Gets all artists (filtered on character <em>a</em> by default).</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/artists?characters=a" target="_blank">characters={characters}</a></td>
+                                <td></td>
+                                <td><a href="/api/artists?api_key={api_key}&characters=a" target="_blank">characters={characters}</a></td>
                                 <td>Gets all artists filtered on characters.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/artists?page_size=10" target="_blank">page_size={page_size}</a></td>
+                                <td></td>
+                                <td><a href="/api/artists?api_key={api_key}&page_size=10" target="_blank">page_size={page_size}</a></td>
                                 <td>Gets all artists filtered on page size.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/artists?page_number=1" target="_blank">page_number={page_number}</a></td>
+                                <td></td>
+                                <td><a href="/api/artists?api_key={api_key}&page_number=1" target="_blank">page_number={page_number}</a></td>
                                 <td>Gets all artists filtered on page number</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <p class="small"><em><strong>Example:</strong> <a href="/api/artists?characters=a&page_size=10&page_number=1" target="_blank">/api/artists?characters=a&page_size=10&page_number=1</a></em></p>
+                    <p class="small"><em><strong>Example:</strong> <a href="/api/artists?api_key={api_key}&characters=a&page_size=10&page_number=1" target="_blank">/api/artists?api_key={api_key}&characters=a&page_size=10&page_number=1</a></em></p>
                 </div>
             </div>
         </div>
@@ -173,19 +184,21 @@
                             <tr>
                                 <th>HTTP verb</th>
                                 <th>Source</th>
+                                <th>API key</th>
                                 <th>Description</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td><kbd>GET</kbd></td>
-                                <td><a href="/api/artists/Cher" target="_blank">/api/artists/{name}</a></td>
+                                <td><a href="/api/artists/Cher?api_key={api_key}" target="_blank">/api/artists/{name}?api_key={api_key}</a></td>
+                                <td><a href="/api/artists/Cher?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
                                 <td>Gets a specific artist.</td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <p class="small"><em><strong>Example:</strong> <a href="/api/artists/Cher" target="_blank">/api/artists/Cher</a></em></p>
+                    <p class="small"><em><strong>Example:</strong> <a href="/api/artists/Cher?api_key={api_key}" target="_blank">/api/artists/Cher?api_key={api_key}</a></em></p>
                 </div>
             </div>
         </div>
