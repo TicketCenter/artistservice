@@ -20,7 +20,7 @@ import java.util.Map;
 @SuppressWarnings("WeakerAccess")
 public class Reader {
     /**
-     * Read the URL into a string.
+     * Read the URL into a string and return that string.
      *
      * @param url           The url to read.
      * @return              A string or nothing if the source doesn't exists.
