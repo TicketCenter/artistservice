@@ -13,17 +13,17 @@ import java.util.Map;
  */
 public class Eventful extends Reader {
     /**
-     * The URL of the Eventful Service.
+     * The URL of the Eventful service.
      */
     private static final String API_URL = "http://api.eventful.com/";
 
     /**
-     * The API key of the Eventful Service.
+     * The API key of the Eventful service.
      */
     private static final String API_KEY = "JFfNZghvjMLmbzh2";
 
     /**
-     * The format of the Eventful Service.
+     * The format of the Eventful service.
      */
     private static final String API_FORMAT = "json";
 

@@ -13,17 +13,17 @@ import java.util.Map;
  */
 public class LastFm extends Reader {
     /**
-     * The URL of the Eventful Service.
+     * The URL of the Eventful service.
      */
     private static final String API_URL = "http://ws.audioscrobbler.com/2.0/";
 
     /**
-     * The API key of the Eventful Service.
+     * The API key of the Eventful service.
      */
     private static final String API_KEY = "a2f47791b8c26629855c06b477ab06b4";
 
     /**
-     * The format of the Eventful Service.
+     * The format of the Eventful service.
      */
     private static final String API_FORMAT = "json";
 
