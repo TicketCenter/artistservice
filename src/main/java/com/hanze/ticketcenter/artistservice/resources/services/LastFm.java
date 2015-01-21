@@ -30,11 +30,11 @@ public class LastFm extends Reader {
     /**
      * Get the data from the service.
      *
-     * @param resource      The resource to get the data from.
-     * @param method        The method of the resource.
-     * @param parameters    The parameters for the method.
-     * @return              String.
-     * @see                 #read(String)
+     * @param resource          The resource to get the data from.
+     * @param method            The method of the resource.
+     * @param parameters        The parameters for the method.
+     * @return                  String.
+     * @see                     #read(String)
      */
     @SuppressWarnings("SameParameterValue")
     public String get(String resource, String method, Map parameters) {

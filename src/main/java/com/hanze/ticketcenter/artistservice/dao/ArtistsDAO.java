@@ -26,13 +26,13 @@ public class ArtistsDAO implements ArtistsDAOInterface {
     private final ArtistsResource artistsResource = new ArtistsResource();
 
     /**
-     * Get all the artists from the artists resource.
+     * Get artists from the artists resource.
      *
-     * @param characters    The characters to filter.
-     * @param pageSize      The amount of concerts to display.
-     * @param pageNumber    The current page.
-     * @return              All the artists.
-     * @see                 #artistsResource#getArtists(String, Integer, Integer)
+     * @param characters        The characters to filter.
+     * @param pageSize          The amount of concerts to display.
+     * @param pageNumber        The current page.
+     * @return                  Artists.
+     * @see                     #artistsResource
      */
     @Override
     public String getArtists(String characters, Integer pageSize, Integer pageNumber) {
@@ -57,11 +57,11 @@ public class ArtistsDAO implements ArtistsDAOInterface {
     }
 
     /**
-     * Get a artist from the artists DAO.
+     * Get an artist from the artists DAO.
      *
-     * @param name          The name of the artist.
-     * @return              A artist.
-     * @see                 #artistsResource#getArtist(String)
+     * @param name              The name of the artist.
+     * @return                  An artist.
+     * @see                     #artistsResource
      */
     @Override
     public String getArtist(String name) {

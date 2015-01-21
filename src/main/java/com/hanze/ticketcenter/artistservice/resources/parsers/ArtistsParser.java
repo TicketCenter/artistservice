@@ -11,7 +11,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The artists parser.
+ *
+ * @author      Nils
+ * @version     1.0
+ * @since       1.0
+ */
 public class ArtistsParser {
+    /**
+     * Parse artists into an artists DTO.
+     *
+     * @param artists           The artists to parse.
+     * @return                  An artists DTO.
+     * @see                     com.hanze.ticketcenter.artistservice.dto.ArtistsDTO
+     */
     public ArtistsDTO parseArtists(String artists) {
         ArtistsDTO artistsDTO = new ArtistsDTO();
 
@@ -34,6 +48,13 @@ public class ArtistsParser {
         return artistsDTO;
     }
 
+    /**
+     * Parse an artist into an artists DTO.
+     *
+     * @param artist            The artist to parse.
+     * @return                  An artists DTO.
+     * @see                     com.hanze.ticketcenter.artistservice.dto.ArtistsDTO
+     */
     public ArtistsDTO parseArtist(String artist) {
         ArtistsDTO artistsDTO = new ArtistsDTO();
 
@@ -50,11 +71,17 @@ public class ArtistsParser {
         return artistsDTO;
     }
 
-    private Map parseArtistMatches(JSONObject oldArtists) {
+    /**
+     * Parse artists into a map.
+     *
+     * @param artists           The artists to parse.
+     * @return                  Parsed artists.
+     */
+    private Map parseArtistMatches(JSONObject artists) {
         Map<String, List> newArtists = new LinkedHashMap<>();
 
-        if(oldArtists != null) {
-            Object artist = oldArtists.get("artist");
+        if(artists != null) {
+            Object artist = artists.get("artist");
             List<Map> newArtistsList = new LinkedList<>();
 
             if(artist instanceof JSONObject) {
@@ -74,23 +101,35 @@ public class ArtistsParser {
         return newArtists;
     }
 
-    private Map parseArtistsArtist(JSONObject oldArtist) {
+    /**
+     * Parse an artist into a map.
+     *
+     * @param artist            The artist to parse.
+     * @return                  A parsed artist.
+     */
+    private Map parseArtistsArtist(JSONObject artist) {
         Map<String, Object> newArtist = new LinkedHashMap<>();
 
-        if(oldArtist != null) {
-            newArtist.put("name", oldArtist.get("name"));
+        if(artist != null) {
+            newArtist.put("name", artist.get("name"));
         }
 
         return newArtist;
     }
 
-    private Map parseArtistArtist(JSONObject oldArtist) {
+    /**
+     * Parse an artist into a map.
+     *
+     * @param artist            The artist to parse.
+     * @return                  A parsed artist.
+     */
+    private Map parseArtistArtist(JSONObject artist) {
         Map<String, Object> newArtist = new LinkedHashMap<>();
 
-        if(oldArtist != null) {
-            JSONObject bio = (JSONObject) oldArtist.get("bio");
+        if(artist != null) {
+            JSONObject bio = (JSONObject) artist.get("bio");
 
-            newArtist.put("name", oldArtist.get("name"));
+            newArtist.put("name", artist.get("name"));
             newArtist.put("biography", bio.get("content"));
             newArtist.put("birth_year", bio.get("yearformed"));
         }
@@ -98,6 +137,13 @@ public class ArtistsParser {
         return newArtist;
     }
 
+    /**
+     * Parse total items and page number into a integer as page count.
+     *
+     * @param totalItems        The tickets available to parse.
+     * @param pageNumber        The tickets available to parse.
+     * @return                  The page count.
+     */
     private Integer parsePageCount(String totalItems, String pageNumber) {
         return Integer.parseInt(totalItems) / Integer.parseInt(pageNumber);
     }

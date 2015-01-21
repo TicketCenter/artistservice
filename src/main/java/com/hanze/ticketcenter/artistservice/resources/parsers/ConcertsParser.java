@@ -9,7 +9,21 @@ import org.json.simple.parser.ParseException;
 import java.text.DecimalFormat;
 import java.util.*;
 
+/**
+ * The concerts parser.
+ *
+ * @author      Nils
+ * @version     1.0
+ * @since       1.0
+ */
 public class ConcertsParser {
+    /**
+     * Parse concerts into a concerts DTO.
+     *
+     * @param concerts          The concerts to parse.
+     * @return                  A concerts DTO.
+     * @see                     com.hanze.ticketcenter.artistservice.dto.ConcertsDTO
+     */
     public ConcertsDTO parseConcerts(String concerts) {
         ConcertsDTO concertsDTO = new ConcertsDTO();
 
@@ -30,6 +44,13 @@ public class ConcertsParser {
         return concertsDTO;
     }
 
+    /**
+     * Parse a concert into a concerts DTO.
+     *
+     * @param concert           The concert to parse.
+     * @return                  A concerts DTO.
+     * @see                     com.hanze.ticketcenter.artistservice.dto.ConcertsDTO
+     */
     public ConcertsDTO parseConcert(String concert) {
         ConcertsDTO concertsDTO = new ConcertsDTO();
 
@@ -46,11 +67,17 @@ public class ConcertsParser {
         return concertsDTO;
     }
 
-    private Map parseEvents(JSONObject oldEvents) {
+    /**
+     * Parse events into a map.
+     *
+     * @param events            The events to parse.
+     * @return                  Parsed events.
+     */
+    private Map parseEvents(JSONObject events) {
         Map<String, List> newConcerts = new LinkedHashMap<>();
 
-        if(oldEvents != null) {
-            Object event = oldEvents.get("event");
+        if(events != null) {
+            Object event = events.get("event");
             List<Map> newConcertsList = new LinkedList<>();
 
             if(event instanceof JSONObject) {
@@ -70,51 +97,69 @@ public class ConcertsParser {
         return newConcerts;
     }
 
-    private Map parseConcertsEvent(JSONObject oldConcert) {
+    /**
+     * Parse an event into a map.
+     *
+     * @param event             The event to parse.
+     * @return                  A parsed event.
+     */
+    private Map parseConcertsEvent(JSONObject event) {
         Map<String, Object> newConcert = new LinkedHashMap<>();
 
-        if(oldConcert != null) {
-            newConcert.put("id", oldConcert.get("id"));
-            newConcert.put("title", oldConcert.get("title"));
-            newConcert.put("description", oldConcert.get("description"));
-            newConcert.put("performers", parsePerformers((JSONObject) oldConcert.get("performers")));
-            newConcert.put("country", oldConcert.get("country_name"));
-            newConcert.put("region", oldConcert.get("region_name"));
-            newConcert.put("city", oldConcert.get("city_name"));
-            newConcert.put("start_time", oldConcert.get("start_time"));
-            newConcert.put("stop_time", oldConcert.get("stop_time"));
-            newConcert.put("tickets_available", parseTicketsAvailable((String) oldConcert.get("longitude")));
-            newConcert.put("ticket_price", parsePrice((String) oldConcert.get("latitude")));
+        if(event != null) {
+            newConcert.put("id", event.get("id"));
+            newConcert.put("title", event.get("title"));
+            newConcert.put("description", event.get("description"));
+            newConcert.put("performers", parsePerformers((JSONObject) event.get("performers")));
+            newConcert.put("country", event.get("country_name"));
+            newConcert.put("region", event.get("region_name"));
+            newConcert.put("city", event.get("city_name"));
+            newConcert.put("start_time", event.get("start_time"));
+            newConcert.put("stop_time", event.get("stop_time"));
+            newConcert.put("tickets_available", parseTicketsAvailable((String) event.get("longitude")));
+            newConcert.put("ticket_price", parseTicketPrice((String) event.get("latitude")));
         }
 
         return newConcert;
     }
 
-    private Map parseConcertEvent(JSONObject oldConcert) {
+    /**
+     * Parse an event into a map.
+     *
+     * @param event             The event to parse.
+     * @return                  A parsed event.
+     */
+    private Map parseConcertEvent(JSONObject event) {
         Map<String, Object> newConcert = new LinkedHashMap<>();
 
-        if(oldConcert != null) {
-            newConcert.put("id", oldConcert.get("id"));
-            newConcert.put("title", oldConcert.get("title"));
-            newConcert.put("description", oldConcert.get("description"));
-            newConcert.put("performers", parsePerformers((JSONObject) oldConcert.get("performers")));
-            newConcert.put("country", oldConcert.get("country"));
-            newConcert.put("region", oldConcert.get("region"));
-            newConcert.put("city", oldConcert.get("city"));
-            newConcert.put("start_time", oldConcert.get("start_time"));
-            newConcert.put("stop_time", oldConcert.get("stop_time"));
-            newConcert.put("tickets_available", parseTicketsAvailable((String) oldConcert.get("longitude")));
-            newConcert.put("ticket_price", parsePrice((String) oldConcert.get("latitude")));
+        if(event != null) {
+            newConcert.put("id", event.get("id"));
+            newConcert.put("title", event.get("title"));
+            newConcert.put("description", event.get("description"));
+            newConcert.put("performers", parsePerformers((JSONObject) event.get("performers")));
+            newConcert.put("country", event.get("country"));
+            newConcert.put("region", event.get("region"));
+            newConcert.put("city", event.get("city"));
+            newConcert.put("start_time", event.get("start_time"));
+            newConcert.put("stop_time", event.get("stop_time"));
+            newConcert.put("tickets_available", parseTicketsAvailable((String) event.get("longitude")));
+            newConcert.put("ticket_price", parseTicketPrice((String) event.get("latitude")));
         }
 
         return newConcert;
     }
 
-    private Map parsePerformers(JSONObject oldPerformers) {
+    /**
+     * Parse performers into a map.
+     *
+     * @param performers        The performers to parse.
+     * @return                  Parsed performers.
+     */
+    private Map parsePerformers(JSONObject performers) {
         Map<String, List> newPerformers = new LinkedHashMap<>();
 
-        if(oldPerformers != null) {
-            Object performer = oldPerformers.get("performer");
+        if(performers != null) {
+            Object performer = performers.get("performer");
             List<Map> netPerformersList = new LinkedList<>();
 
             if(performer instanceof JSONObject) {
@@ -134,18 +179,30 @@ public class ConcertsParser {
         return newPerformers;
     }
 
-    private Map parsePerformer(JSONObject oldPerformer) {
+    /**
+     * Parse a performer into a map.
+     *
+     * @param performer         The performer to parse.
+     * @return                  A parsed performer.
+     */
+    private Map parsePerformer(JSONObject performer) {
         Map<String, Object> newPerformer = new LinkedHashMap<>();
 
-        if(oldPerformer != null) {
-            newPerformer.put("name", oldPerformer.get("name"));
+        if(performer != null) {
+            newPerformer.put("name", performer.get("name"));
         }
 
         return newPerformer;
     }
 
-    private Integer parseTicketsAvailable(String longitude) {
-        String[] split = longitude.replace("-", "").split("\\.");
+    /**
+     * Parse tickets available into a integer.
+     *
+     * @param ticketsAvailable  The tickets available to parse.
+     * @return                  The tickets available.
+     */
+    private Integer parseTicketsAvailable(String ticketsAvailable) {
+        String[] split = ticketsAvailable.replace("-", "").split("\\.");
         Integer price = null;
 
         try {
@@ -161,8 +218,14 @@ public class ConcertsParser {
         return price;
     }
 
-    private Double parsePrice(String latitude) {
-        String[] split = latitude.replace("-", "").split("\\.");
+    /**
+     * Parse tickets price into a double.
+     *
+     * @param ticketsPrice      The tickets price to parse.
+     * @return                  The tickets price.
+     */
+    private Double parseTicketPrice(String ticketsPrice) {
+        String[] split = ticketsPrice.replace("-", "").split("\\.");
         Double price = null;
 
         try {

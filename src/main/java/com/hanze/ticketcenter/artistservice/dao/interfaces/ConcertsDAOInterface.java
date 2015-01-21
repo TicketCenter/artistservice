@@ -9,20 +9,20 @@ package com.hanze.ticketcenter.artistservice.dao.interfaces;
  */
 public interface ConcertsDAOInterface {
     /**
-     * Get all the concerts from the concerts resource.
+     * Get concerts from the concerts resource.
      *
-     * @param location      The location to filter.
-     * @param pageSize      The amount of concerts to display.
-     * @param pageNumber    The current page.
-     * @return              All the concerts.
+     * @param location          The location to filter.
+     * @param pageSize          The amount of concerts to display.
+     * @param pageNumber        The current page.
+     * @return                  Concerts.
      */
     public String getConcerts(String location, Integer pageSize, Integer pageNumber);
 
     /**
      * Get a concert from the concerts resource.
      *
-     * @param id            The id of the concert.
-     * @return              A concert.
+     * @param id                The id of the concert.
+     * @return                  A concert.
      */
     public String getConcert(String id);
 }

@@ -25,13 +25,13 @@ public class Artists {
     private final ArtistsDAO artistsDAO = new ArtistsDAO();
 
     /**
-     * Get all the artists from the artists DAO.
+     * Get artists from the artists DAO.
      *
-     * @param characters    The characters to filter.
-     * @param pageSize      The amount of concerts to display.
-     * @param pageNumber    The current page.
-     * @return              All the artists.
-     * @see                 #artistsDAO#getArtists(String, Integer, Integer)
+     * @param characters        The characters to filter.
+     * @param pageSize          The amount of concerts to display.
+     * @param pageNumber        The current page.
+     * @return                  Artists.
+     * @see                     #artistsDAO#getArtists(String, Integer, Integer)
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -44,11 +44,11 @@ public class Artists {
     }
 
     /**
-     * Get a artist from the artists DAO.
+     * Get an artist from the artists DAO.
      *
-     * @param name          The name of the artist.
-     * @return              A artist.
-     * @see                 #artistsDAO#getArtist(String)
+     * @param name              The name of the artist.
+     * @return                  An artist.
+     * @see                     #artistsDAO#getArtist(String)
      */
     @GET
     @Path("/{name}")

@@ -25,13 +25,13 @@ public class Concerts {
     private final ConcertsDAO concertsDAO = new ConcertsDAO();
 
     /**
-     * Get all the concerts from the Concerts DAO.
+     * Get concerts from the Concerts DAO.
      *
-     * @param location      The location to filter.
-     * @param pageSize      The amount of concerts to display.
-     * @param pageNumber    The current page.
-     * @return              All the concerts.
-     * @see                 #concertsDAO#getConcerts(String, Integer, Integer)
+     * @param location          The location to filter.
+     * @param pageSize          The amount of concerts to display.
+     * @param pageNumber        The current page.
+     * @return                  Concerts.
+     * @see                     #concertsDAO#getConcerts(String, Integer, Integer)
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -46,9 +46,9 @@ public class Concerts {
     /**
      * Get a concert from the concerts DAO.
      *
-     * @param id            The id of the concert.
-     * @return              A concert.
-     * @see                 #concertsDAO#getConcert(String)
+     * @param id                The id of the concert.
+     * @return                  A concert.
+     * @see                     #concertsDAO#getConcert(String)
      */
     @GET
     @Path("/{id}")

@@ -22,8 +22,8 @@ public class Reader {
     /**
      * Read a URL.
      *
-     * @param url           The url to read.
-     * @return              A string or nothing if the source doesn't exists.
+     * @param url               The url to read.
+     * @return                  A string or nothing if the source doesn't exists.
      */
     public String read(String url) {
         try {
@@ -46,8 +46,8 @@ public class Reader {
     /**
      * Build URL parameters.
      *
-     * @param parameters    The parameters to build.
-     * @return              Made URL parameters.
+     * @param parameters        The parameters to build.
+     * @return                  Made URL parameters.
      */
     public String buildUrlParameters(Map parameters) {
         Iterator iterator = parameters.entrySet().iterator();
