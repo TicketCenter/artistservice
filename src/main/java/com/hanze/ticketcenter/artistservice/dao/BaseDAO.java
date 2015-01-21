@@ -1,6 +1,6 @@
 package com.hanze.ticketcenter.artistservice.dao;
 
-import com.hanze.ticketcenter.artistservice.API;
+import com.hanze.ticketcenter.artistservice.config.API;
 
 import java.util.Map;
 
@@ -16,7 +16,7 @@ abstract public class BaseDAO {
     /**
      * The API config.
      *
-     * @see com.hanze.ticketcenter.artistservice.API
+     * @see com.hanze.ticketcenter.artistservice.config.API
      */
     private final API api = new API();
 
@@ -49,7 +49,7 @@ abstract public class BaseDAO {
     protected void statusUnauthorized(Map<String, Object> map) {
         map.put("status", 401);
         map.put("message", "Unauthorized");
-        map.put("description", "A valid api key is required.");
+        map.put("description", "A valid API key is required.");
     }
 
     /**
