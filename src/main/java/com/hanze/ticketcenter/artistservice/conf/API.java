@@ -1,4 +1,4 @@
-package com.hanze.ticketcenter.artistservice;
+package com.hanze.ticketcenter.artistservice.conf;
 
 /**
  * The API config.
