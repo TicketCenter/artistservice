@@ -31,7 +31,7 @@ public class Artists {
      * @param pageSize          The amount of concerts to display.
      * @param pageNumber        The current page.
      * @return                  Artists.
-     * @see                     #artistsDAO#getArtists(String, Integer, Integer)
+     * @see                     #artistsDAO
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -48,7 +48,7 @@ public class Artists {
      *
      * @param name              The name of the artist.
      * @return                  An artist.
-     * @see                     #artistsDAO#getArtist(String)
+     * @see                     #artistsDAO
      */
     @GET
     @Path("/{name}")

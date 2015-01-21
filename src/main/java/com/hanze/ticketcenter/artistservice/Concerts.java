@@ -31,7 +31,7 @@ public class Concerts {
      * @param pageSize          The amount of concerts to display.
      * @param pageNumber        The current page.
      * @return                  Concerts.
-     * @see                     #concertsDAO#getConcerts(String, Integer, Integer)
+     * @see                     #concertsDAO
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -48,7 +48,7 @@ public class Concerts {
      *
      * @param id                The id of the concert.
      * @return                  A concert.
-     * @see                     #concertsDAO#getConcert(String)
+     * @see                     #concertsDAO
      */
     @GET
     @Path("/{id}")
