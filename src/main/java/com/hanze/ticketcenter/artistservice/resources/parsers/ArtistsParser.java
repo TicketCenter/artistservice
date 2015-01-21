@@ -96,6 +96,8 @@ public class ArtistsParser {
             }
 
             newArtists.put("artist", newArtistsList);
+        } else {
+            newArtists = null;
         }
 
         return newArtists;
@@ -112,6 +114,8 @@ public class ArtistsParser {
 
         if(artist != null) {
             newArtist.put("name", artist.get("name"));
+        } else {
+            newArtist = null;
         }
 
         return newArtist;
@@ -128,10 +132,11 @@ public class ArtistsParser {
 
         if(artist != null) {
             JSONObject bio = (JSONObject) artist.get("bio");
-
             newArtist.put("name", artist.get("name"));
             newArtist.put("biography", bio.get("content"));
             newArtist.put("birth_year", bio.get("yearformed"));
+        } else {
+            newArtist = null;
         }
 
         return newArtist;

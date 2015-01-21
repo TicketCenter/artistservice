@@ -92,6 +92,8 @@ public class ConcertsParser {
             }
 
             newConcerts.put("concert", newConcertsList);
+        } else {
+            newConcerts = null;
         }
 
         return newConcerts;
@@ -118,6 +120,8 @@ public class ConcertsParser {
             newConcert.put("stop_time", event.get("stop_time"));
             newConcert.put("tickets_available", parseTicketsAvailable((String) event.get("longitude")));
             newConcert.put("ticket_price", parseTicketPrice((String) event.get("latitude")));
+        } else {
+            newConcert = null;
         }
 
         return newConcert;
@@ -144,6 +148,8 @@ public class ConcertsParser {
             newConcert.put("stop_time", event.get("stop_time"));
             newConcert.put("tickets_available", parseTicketsAvailable((String) event.get("longitude")));
             newConcert.put("ticket_price", parseTicketPrice((String) event.get("latitude")));
+        } else {
+            newConcert = null;
         }
 
         return newConcert;
@@ -173,7 +179,9 @@ public class ConcertsParser {
                 }
             }
 
-            newPerformers.put("concert", netPerformersList);
+            newPerformers.put("performer", netPerformersList);
+        } else {
+            newPerformers = null;
         }
 
         return newPerformers;
@@ -190,6 +198,8 @@ public class ConcertsParser {
 
         if(performer != null) {
             newPerformer.put("name", performer.get("name"));
+        } else {
+            newPerformer = null;
         }
 
         return newPerformer;
