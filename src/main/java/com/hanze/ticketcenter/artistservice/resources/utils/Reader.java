@@ -10,8 +10,21 @@ import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * The reader.
+ *
+ * @author      Nils
+ * @version     1.0
+ * @since       1.0
+ */
 @SuppressWarnings("WeakerAccess")
 public class Reader {
+    /**
+     * Read the URL into a string.
+     *
+     * @param url           The url to read.
+     * @return              A string or nothing if the source doesn't exists.
+     */
     public String read(String url) {
         try {
             InputStream inputStream = new URL(url).openStream();
@@ -30,6 +43,12 @@ public class Reader {
         return null;
     }
 
+    /**
+     * Build URL parameters.
+     *
+     * @param parameters    The parameters to build.
+     * @return              Made URL parameters.
+     */
     public String buildUrlParameters(Map parameters) {
         Iterator iterator = parameters.entrySet().iterator();
         String newParameters = "";
