@@ -16,7 +16,7 @@ import java.util.Map;
  * @version     1.0
  * @since       1.0
  */
-public class ArtistsDAO implements ArtistsDAOInterface {
+public class ArtistsDAO extends BaseDAO implements ArtistsDAOInterface {
     /**
      * The artists resource.
      *
@@ -28,6 +28,7 @@ public class ArtistsDAO implements ArtistsDAOInterface {
     /**
      * Get artists from the artists resource.
      *
+     * @param apiKey            The api key to identify.
      * @param characters        The characters to filter.
      * @param pageSize          The amount of concerts to display.
      * @param pageNumber        The current page.
@@ -35,22 +36,24 @@ public class ArtistsDAO implements ArtistsDAOInterface {
      * @see                     #artistsResource
      */
     @Override
-    public String getArtists(String characters, Integer pageSize, Integer pageNumber) {
-        ArtistsDTO artistsDTO = artistsResource.getArtistsResource(characters, pageSize, pageNumber);
+    public String getArtists(String apiKey, String characters, Integer pageSize, Integer pageNumber) {
         Map<String, Object> artistsMap = new LinkedHashMap<>();
 
-        if(artistsDTO.getArtists() != null) {
-            artistsMap.put("status", 200);
-            artistsMap.put("message", "OK");
-            artistsMap.put("total_items", artistsDTO.getTotalItems());
-            artistsMap.put("page_size", artistsDTO.getPageSize());
-            artistsMap.put("page_number", artistsDTO.getPageNumber());
-            artistsMap.put("page_count", artistsDTO.getPageCount());
-            artistsMap.put("artists", artistsDTO.getArtists());
+        if(authenticate(apiKey)) {
+            ArtistsDTO artistsDTO = artistsResource.getArtistsResource(characters, pageSize, pageNumber);
+
+            if(artistsDTO.getArtists() != null) {
+                statusOk(artistsMap);
+                artistsMap.put("total_items", artistsDTO.getTotalItems());
+                artistsMap.put("page_size", artistsDTO.getPageSize());
+                artistsMap.put("page_number", artistsDTO.getPageNumber());
+                artistsMap.put("page_count", artistsDTO.getPageCount());
+                artistsMap.put("artists", artistsDTO.getArtists());
+            } else {
+                statusNotFound(artistsMap, "There are no artists found.");
+            }
         } else {
-            artistsMap.put("status", 404);
-            artistsMap.put("message", "Not Found");
-            artistsMap.put("description", "There are no artists found.");
+            statusUnauthorized(artistsMap);
         }
 
         return JSONValue.toJSONString(artistsMap);
@@ -59,23 +62,26 @@ public class ArtistsDAO implements ArtistsDAOInterface {
     /**
      * Get an artist from the artists DAO.
      *
+     * @param apiKey            The api key to identify.
      * @param name              The name of the artist.
      * @return                  An artist.
      * @see                     #artistsResource
      */
     @Override
-    public String getArtist(String name) {
-        ArtistsDTO artistsDTO = artistsResource.getArtistResource(name);
+    public String getArtist(String apiKey, String name) {
         Map<String, Object> artistMap = new LinkedHashMap<>();
 
-        if(artistsDTO.getArtists() != null) {
-            artistMap.put("status", 200);
-            artistMap.put("message", "OK");
-            artistMap.put("artist", artistsDTO.getArtists());
+        if(authenticate(apiKey)) {
+            ArtistsDTO artistsDTO = artistsResource.getArtistResource(name);
+
+            if (artistsDTO.getArtists() != null) {
+                statusOk(artistMap);
+                artistMap.put("artist", artistsDTO.getArtists());
+            } else {
+                statusNotFound(artistMap, "Artist not found.");
+            }
         } else {
-            artistMap.put("status", 404);
-            artistMap.put("message", "Not Found");
-            artistMap.put("description", "Artist not found.");
+            statusUnauthorized(artistMap);
         }
 
         return JSONValue.toJSONString(artistMap);

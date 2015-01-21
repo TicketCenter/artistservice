@@ -16,7 +16,7 @@ import java.util.Map;
  * @version     1.0
  * @since       1.0
  */
-public class ConcertsDAO implements ConcertsDAOInterface {
+public class ConcertsDAO extends BaseDAO implements ConcertsDAOInterface {
     /**
      * The concerts resource.
      *
@@ -28,6 +28,7 @@ public class ConcertsDAO implements ConcertsDAOInterface {
     /**
      * Get concerts from the concerts resource.
      *
+     * @param apiKey            The api key to identify.
      * @param location          The location to filter.
      * @param pageSize          The amount of concerts to display.
      * @param pageNumber        The current page.
@@ -35,22 +36,24 @@ public class ConcertsDAO implements ConcertsDAOInterface {
      * @see                     #concertsResource
      */
     @Override
-    public String getConcerts(String location, Integer pageSize, Integer pageNumber) {
-        ConcertsDTO concertsDTO = concertsResource.getConcertsResource(location, pageSize, pageNumber);
+    public String getConcerts(String apiKey, String location, Integer pageSize, Integer pageNumber) {
         Map<String, Object> concertsMap = new LinkedHashMap<>();
 
-        if(concertsDTO.getConcerts() != null) {
-            concertsMap.put("status", 200);
-            concertsMap.put("message", "OK");
-            concertsMap.put("total_items", concertsDTO.getTotalItems());
-            concertsMap.put("page_size", concertsDTO.getPageSize());
-            concertsMap.put("page_number", concertsDTO.getPageNumber());
-            concertsMap.put("page_count", concertsDTO.getPageCount());
-            concertsMap.put("concerts", concertsDTO.getConcerts());
+        if(authenticate(apiKey)) {
+            ConcertsDTO concertsDTO = concertsResource.getConcertsResource(location, pageSize, pageNumber);
+
+            if(concertsDTO.getConcerts() != null) {
+                statusOk(concertsMap);
+                concertsMap.put("total_items", concertsDTO.getTotalItems());
+                concertsMap.put("page_size", concertsDTO.getPageSize());
+                concertsMap.put("page_number", concertsDTO.getPageNumber());
+                concertsMap.put("page_count", concertsDTO.getPageCount());
+                concertsMap.put("concerts", concertsDTO.getConcerts());
+            } else {
+                statusNotFound(concertsMap, "There are no concerts found.");
+            }
         } else {
-            concertsMap.put("status", 404);
-            concertsMap.put("message", "Not Found");
-            concertsMap.put("description", "There are no concerts found.");
+            statusUnauthorized(concertsMap);
         }
 
         return JSONValue.toJSONString(concertsMap);
@@ -59,23 +62,26 @@ public class ConcertsDAO implements ConcertsDAOInterface {
     /**
      * Get a concert from the concerts resource.
      *
+     * @param apiKey            The api key to identify.
      * @param id                The id of the concert.
      * @return                  A concert.
      * @see                     #concertsResource
      */
     @Override
-    public String getConcert(String id) {
-        ConcertsDTO concertsDTO = concertsResource.getConcertResource(id);
+    public String getConcert(String apiKey, String id) {
         Map<String, Object> concertMap = new LinkedHashMap<>();
 
-        if(concertsDTO.getConcerts() != null) {
-            concertMap.put("status", 200);
-            concertMap.put("message", "OK");
-            concertMap.put("concert", concertsDTO.getConcerts());
+        if(authenticate(apiKey)) {
+            ConcertsDTO concertsDTO = concertsResource.getConcertResource(id);
+
+            if(concertsDTO.getConcerts() != null) {
+                statusOk(concertMap);
+                concertMap.put("concert", concertsDTO.getConcerts());
+            } else {
+                statusNotFound(concertMap, "Concert not found.");
+            }
         } else {
-            concertMap.put("status", 404);
-            concertMap.put("message", "Not Found");
-            concertMap.put("description", "Concert not found.");
+            statusUnauthorized(concertMap);
         }
 
         return JSONValue.toJSONString(concertMap);

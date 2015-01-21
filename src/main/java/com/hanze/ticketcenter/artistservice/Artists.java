@@ -27,6 +27,7 @@ public class Artists {
     /**
      * Get artists from the artists DAO.
      *
+     * @param apiKey            The api key to identify.
      * @param characters        The characters to filter.
      * @param pageSize          The amount of concerts to display.
      * @param pageNumber        The current page.
@@ -36,16 +37,18 @@ public class Artists {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getArtists(
+            @DefaultValue("") @QueryParam("api_key") String apiKey,
             @DefaultValue("a") @QueryParam("characters") String characters,
             @DefaultValue("10") @QueryParam("page_size") Integer pageSize,
             @DefaultValue("1") @QueryParam("page_number") Integer pageNumber) {
 
-        return artistsDAO.getArtists(characters, pageSize, pageNumber);
+        return artistsDAO.getArtists(apiKey, characters, pageSize, pageNumber);
     }
 
     /**
      * Get an artist from the artists DAO.
      *
+     * @param apiKey            The api key to identify.
      * @param name              The name of the artist.
      * @return                  An artist.
      * @see                     #artistsDAO
@@ -54,8 +57,9 @@ public class Artists {
     @Path("/{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getArtist(
-            @PathParam("name") String name) {
+            @DefaultValue("") @QueryParam("api_key") String apiKey,
+            @DefaultValue("") @PathParam("name") String name) {
 
-        return artistsDAO.getArtist(name);
+        return artistsDAO.getArtist(apiKey, name);
     }
 }

@@ -27,6 +27,7 @@ public class Concerts {
     /**
      * Get concerts from the Concerts DAO.
      *
+     * @param apiKey            The api key to identify.
      * @param location          The location to filter.
      * @param pageSize          The amount of concerts to display.
      * @param pageNumber        The current page.
@@ -36,16 +37,18 @@ public class Concerts {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getConcerts(
+            @DefaultValue("") @QueryParam("api_key") String apiKey,
             @DefaultValue("") @QueryParam("location") String location,
             @DefaultValue("10") @QueryParam("page_size") Integer pageSize,
             @DefaultValue("1") @QueryParam("page_number") Integer pageNumber) {
 
-        return concertsDAO.getConcerts(location, pageSize, pageNumber);
+        return concertsDAO.getConcerts(apiKey, location, pageSize, pageNumber);
     }
 
     /**
      * Get a concert from the concerts DAO.
      *
+     * @param apiKey            The api key to identify.
      * @param id                The id of the concert.
      * @return                  A concert.
      * @see                     #concertsDAO
@@ -54,8 +57,9 @@ public class Concerts {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getConcert(
-            @PathParam("id") String id) {
+            @DefaultValue("") @QueryParam("api_key") String apiKey,
+            @DefaultValue("") @PathParam("id") String id) {
 
-        return concertsDAO.getConcert(id);
+        return concertsDAO.getConcert(apiKey, id);
     }
 }
