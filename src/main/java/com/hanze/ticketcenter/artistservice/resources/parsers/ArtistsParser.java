@@ -1,30 +1,104 @@
 package com.hanze.ticketcenter.artistservice.resources.parsers;
 
-import com.hanze.ticketcenter.artistservice.resources.services.LastFm;
+import com.hanze.ticketcenter.artistservice.dto.ArtistsDTO;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class ArtistsParser {
-    private final LastFm lastFm = new LastFm();
+    public ArtistsDTO parseArtists(String artists) {
+        ArtistsDTO artistsDTO = new ArtistsDTO();
 
-    public String parseArtists(String characters, String pageSize, String pageNumber) {
-        Map<String, String> parameters = new HashMap<>();
-        parameters.put("artist", characters);
-        parameters.put("limit", pageSize);
-        parameters.put("page", pageNumber);
+        try {
+            JSONObject oldArtists = (JSONObject) new JSONParser().parse(artists);
+            JSONObject results = (JSONObject) oldArtists.get("results");
+            JSONObject query = (JSONObject) results.get("opensearch:Query");
 
-        return lastFm.get("artist", "search", parameters);
+            if(!results.get("opensearch:totalResults").equals("0")) {
+                artistsDTO.setTotalItems(Integer.parseInt((String) results.get("opensearch:totalResults")));
+                artistsDTO.setPageSize(Integer.parseInt((String) results.get("opensearch:itemsPerPage")));
+                artistsDTO.setPageNumber(Integer.parseInt((String) query.get("startPage")));
+                artistsDTO.setPageCount(parsePageCount((String) results.get("opensearch:totalResults"), (String) results.get("opensearch:itemsPerPage")));
+                artistsDTO.setArtists(parseArtistMatches((JSONObject) results.get("artistmatches")));
+            }
+        } catch(ParseException e) {
+            e.printStackTrace();
+        }
 
-        // TODO
+        return artistsDTO;
     }
 
-    public String parseArtist(String name) {
-        Map<String, String> parameters = new HashMap<>();
-        parameters.put("artist", name);
+    public ArtistsDTO parseArtist(String artist) {
+        ArtistsDTO artistsDTO = new ArtistsDTO();
 
-        return lastFm.get("artist", "getinfo", parameters);
+        try {
+            JSONObject oldArtist = (JSONObject) new JSONParser().parse(artist);
 
-        // TODO
+            if(oldArtist.get("error") == null) {
+                artistsDTO.setArtists(parseArtistArtist((JSONObject) oldArtist.get("artist")));
+            }
+        } catch(ParseException e) {
+            e.printStackTrace();
+        }
+
+        return artistsDTO;
+    }
+
+    private Map parseArtistMatches(JSONObject oldArtists) {
+        Map<String, List> newArtists = new LinkedHashMap<>();
+
+        if(oldArtists != null) {
+            Object artist = oldArtists.get("artist");
+            List<Map> newArtistsList = new LinkedList<>();
+
+            if(artist instanceof JSONObject) {
+                JSONObject artistJsonObject = (JSONObject) artist;
+                newArtistsList.add(parseArtistsArtist(artistJsonObject));
+            } else if(artist instanceof JSONArray) {
+                JSONArray artistJsonArray = (JSONArray) artist;
+
+                for(Object eventJsonObject : artistJsonArray) {
+                    newArtistsList.add(parseArtistsArtist((JSONObject) eventJsonObject));
+                }
+            }
+
+            newArtists.put("artist", newArtistsList);
+        }
+
+        return newArtists;
+    }
+
+    private Map parseArtistsArtist(JSONObject oldArtist) {
+        Map<String, Object> newArtist = new LinkedHashMap<>();
+
+        if(oldArtist != null) {
+            newArtist.put("name", oldArtist.get("name"));
+        }
+
+        return newArtist;
+    }
+
+    private Map parseArtistArtist(JSONObject oldArtist) {
+        Map<String, Object> newArtist = new LinkedHashMap<>();
+
+        if(oldArtist != null) {
+            JSONObject bio = (JSONObject) oldArtist.get("bio");
+
+            newArtist.put("name", oldArtist.get("name"));
+            newArtist.put("biography", bio.get("content"));
+            newArtist.put("birth_year", bio.get("yearformed"));
+        }
+
+        return newArtist;
+    }
+
+    public Integer parsePageCount(String totalItems, String pageNumber) {
+        return Integer.parseInt(totalItems) / Integer.parseInt(pageNumber);
     }
 }

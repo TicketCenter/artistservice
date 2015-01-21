@@ -4,7 +4,9 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -34,7 +36,12 @@ public class Reader {
 
         while(iterator.hasNext()) {
             Map.Entry pairs = (Map.Entry)iterator.next();
-            newParameters += "&" + pairs.getKey() + "=" + pairs.getValue();
+
+            try {
+                newParameters += "&" + pairs.getKey() + "=" + URLEncoder.encode(pairs.getValue().toString(), "UTF-8");
+            } catch(UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
 
         return newParameters;

@@ -21,7 +21,6 @@ public class ConcertsParser {
                 concertsDTO.setPageSize(Integer.parseInt((String) oldConcerts.get("page_size")));
                 concertsDTO.setPageNumber(Integer.parseInt((String) oldConcerts.get("page_number")));
                 concertsDTO.setPageCount(Integer.parseInt((String) oldConcerts.get("page_count")));
-                concertsDTO.setSearchTime(Double.parseDouble((String) oldConcerts.get("search_time")));
                 concertsDTO.setConcerts(parseEvents((JSONObject) oldConcerts.get("events")));
             }
         } catch(ParseException e) {
@@ -140,7 +139,6 @@ public class ConcertsParser {
 
         if(oldPerformer != null) {
             newPerformer.put("name", oldPerformer.get("name"));
-            newPerformer.put("short_bio", oldPerformer.get("short_bio"));
         }
 
         return newPerformer;

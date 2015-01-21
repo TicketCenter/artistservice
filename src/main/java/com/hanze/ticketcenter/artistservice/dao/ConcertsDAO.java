@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ConcertsDAO implements ConcertsDAOInterface {
-    @Resource
+    @Resource(name="ConcertsResource")
     private final ConcertsResource concertsResource = new ConcertsResource();
 
     @Override
@@ -25,7 +25,6 @@ public class ConcertsDAO implements ConcertsDAOInterface {
             concertsMap.put("page_size", concertsDTO.getPageSize());
             concertsMap.put("page_number", concertsDTO.getPageNumber());
             concertsMap.put("page_count", concertsDTO.getPageCount());
-            concertsMap.put("search_time", concertsDTO.getSearchTime());
             concertsMap.put("concerts", concertsDTO.getConcerts());
         } else {
             concertsMap.put("status", 404);

@@ -5,7 +5,6 @@ public class ConcertsDTO {
     private Integer pageSize;
     private Integer pageNumber;
     private Integer pageCount;
-    private Double searchTime;
     private Object concerts;
 
     public Integer getTotalItems() {
@@ -38,14 +37,6 @@ public class ConcertsDTO {
 
     public void setPageCount(Integer pageCount) {
         this.pageCount = pageCount;
-    }
-
-    public Double getSearchTime() {
-        return searchTime;
-    }
-
-    public void setSearchTime(Double searchTime) {
-        this.searchTime = searchTime;
     }
 
     public Object getConcerts() {
