@@ -43,17 +43,17 @@ public class ArtistsDAO extends BaseDAO implements ArtistsDAOInterface {
             ArtistsDTO artistsDTO = artistsResource.getArtistsResource(characters, pageSize, pageNumber);
 
             if(artistsDTO.getArtists() != null) {
-                statusOk(artistsMap);
+                artistsMap.putAll(statusOk());
                 artistsMap.put("total_items", artistsDTO.getTotalItems());
                 artistsMap.put("page_size", artistsDTO.getPageSize());
                 artistsMap.put("page_number", artistsDTO.getPageNumber());
                 artistsMap.put("page_count", artistsDTO.getPageCount());
                 artistsMap.put("artists", artistsDTO.getArtists());
             } else {
-                statusNotFound(artistsMap, "There are no artists found.");
+                artistsMap.putAll(statusNotFound("There are no artists found."));
             }
         } else {
-            statusUnauthorized(artistsMap);
+            artistsMap.putAll(statusUnauthorized());
         }
 
         return JSONValue.toJSONString(artistsMap);
@@ -75,13 +75,13 @@ public class ArtistsDAO extends BaseDAO implements ArtistsDAOInterface {
             ArtistsDTO artistsDTO = artistsResource.getArtistResource(name);
 
             if (artistsDTO.getArtists() != null) {
-                statusOk(artistMap);
+                artistMap.putAll(statusOk());
                 artistMap.put("artist", artistsDTO.getArtists());
             } else {
-                statusNotFound(artistMap, "Artist not found.");
+                artistMap.putAll(statusNotFound("Artist not found."));
             }
         } else {
-            statusUnauthorized(artistMap);
+            artistMap.putAll(statusUnauthorized());
         }
 
         return JSONValue.toJSONString(artistMap);

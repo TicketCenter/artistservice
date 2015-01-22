@@ -48,28 +48,28 @@
                                 <td><a href="/api/concerts?api_key={api_key}" target="_blank">/api/concerts</a></td>
                                 <td><a href="/api/concerts?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
                                 <td></td>
-                                <td>Gets all concerts.</td>
+                                <td>Get concerts.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td><a href="/api/concerts?api_key={api_key}&location=Netherlands" target="_blank">location={location}</a></td>
-                                <td>Gets all concerts filtered on location.</td>
+                                <td>Get concerts filtered on location.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td><a href="/api/concerts?api_key={api_key}&page_size=10" target="_blank">page_size={page_size}</a></td>
-                                <td>Gets all concerts filtered on page size.</td>
+                                <td>Get concerts filtered on page size.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td><a href="/api/concerts?api_key={api_key}&page_number=1" target="_blank">page_number={page_number}</a></td>
-                                <td>Gets all concerts filtered on page number</td>
+                                <td>Get concerts filtered on page number</td>
                             </tr>
                             </tbody>
                         </table>
@@ -102,7 +102,7 @@
                                 <td><kbd>GET</kbd></td>
                                 <td><a href="/api/concerts/E0-001-075694702-5?api_key={api_key}" target="_blank">/api/concerts/{id}</a></td>
                                 <td><a href="/api/concerts/E0-001-075694702-5?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
-                                <td>Gets a specific concert.</td>
+                                <td>Get a concert.</td>
                             </tr>
                             </tbody>
                         </table>
@@ -140,28 +140,28 @@
                                 <td><a href="/api/artists?api_key={api_key}" target="_blank">/api/artists</a></td>
                                 <td><a href="/api/artists?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
                                 <td></td>
-                                <td>Gets all artists (filtered on character <em>a</em> by default).</td>
+                                <td>Get artists (filtered on character <em>a</em> by default).</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td><a href="/api/artists?api_key={api_key}&characters=a" target="_blank">characters={characters}</a></td>
-                                <td>Gets all artists filtered on characters.</td>
+                                <td>Get artists filtered on characters.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td><a href="/api/artists?api_key={api_key}&page_size=10" target="_blank">page_size={page_size}</a></td>
-                                <td>Gets all artists filtered on page size.</td>
+                                <td>Get artists filtered on page size.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td><a href="/api/artists?api_key={api_key}&page_number=1" target="_blank">page_number={page_number}</a></td>
-                                <td>Gets all artists filtered on page number</td>
+                                <td>Get artists filtered on page number</td>
                             </tr>
                             </tbody>
                         </table>
@@ -191,9 +191,9 @@
                             <tbody>
                             <tr>
                                 <td><kbd>GET</kbd></td>
-                                <td><a href="/api/artists/Cher?api_key={api_key}" target="_blank">/api/artists/{name}?api_key={api_key}</a></td>
+                                <td><a href="/api/artists/Cher?api_key={api_key}" target="_blank">/api/artists/{name}</a></td>
                                 <td><a href="/api/artists/Cher?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
-                                <td>Gets a specific artist.</td>
+                                <td>Get an artist.</td>
                             </tr>
                             </tbody>
                         </table>

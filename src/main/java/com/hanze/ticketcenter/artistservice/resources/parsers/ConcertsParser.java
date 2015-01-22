@@ -112,7 +112,8 @@ public class ConcertsParser {
             newConcert.put("id", event.get("id"));
             newConcert.put("title", event.get("title"));
             newConcert.put("description", event.get("description"));
-            newConcert.put("performers", parsePerformers((JSONObject) event.get("performers")));
+            newConcert.put("artists", parsePerformers((JSONObject) event.get("performers")));
+            newConcert.put("image", "todo");  // TODO
             newConcert.put("country", event.get("country_name"));
             newConcert.put("region", event.get("region_name"));
             newConcert.put("city", event.get("city_name"));
@@ -140,7 +141,8 @@ public class ConcertsParser {
             newConcert.put("id", event.get("id"));
             newConcert.put("title", event.get("title"));
             newConcert.put("description", event.get("description"));
-            newConcert.put("performers", parsePerformers((JSONObject) event.get("performers")));
+            newConcert.put("artists", parsePerformers((JSONObject) event.get("performers")));
+            newConcert.put("image", "todo"); // TODO
             newConcert.put("country", event.get("country"));
             newConcert.put("region", event.get("region"));
             newConcert.put("city", event.get("city"));
@@ -162,7 +164,7 @@ public class ConcertsParser {
      * @return                  Parsed performers.
      */
     private Map parsePerformers(JSONObject performers) {
-        Map<String, List> newPerformers = new LinkedHashMap<>();
+        Map<String, List> newArtists = new LinkedHashMap<>();
 
         if(performers != null) {
             Object performer = performers.get("performer");
@@ -179,12 +181,12 @@ public class ConcertsParser {
                 }
             }
 
-            newPerformers.put("performer", netPerformersList);
+            newArtists.put("artist", netPerformersList);
         } else {
-            newPerformers = null;
+            newArtists = null;
         }
 
-        return newPerformers;
+        return newArtists;
     }
 
     /**
@@ -194,15 +196,15 @@ public class ConcertsParser {
      * @return                  A parsed performer.
      */
     private Map parsePerformer(JSONObject performer) {
-        Map<String, Object> newPerformer = new LinkedHashMap<>();
+        Map<String, Object> newArtist = new LinkedHashMap<>();
 
         if(performer != null) {
-            newPerformer.put("name", performer.get("name"));
+            newArtist.put("name", performer.get("name"));
         } else {
-            newPerformer = null;
+            newArtist = null;
         }
 
-        return newPerformer;
+        return newArtist;
     }
 
     /**

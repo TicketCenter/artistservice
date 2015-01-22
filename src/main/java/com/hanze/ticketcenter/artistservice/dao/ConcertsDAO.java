@@ -43,17 +43,17 @@ public class ConcertsDAO extends BaseDAO implements ConcertsDAOInterface {
             ConcertsDTO concertsDTO = concertsResource.getConcertsResource(location, pageSize, pageNumber);
 
             if(concertsDTO.getConcerts() != null) {
-                statusOk(concertsMap);
+                concertsMap.putAll(statusOk());
                 concertsMap.put("total_items", concertsDTO.getTotalItems());
                 concertsMap.put("page_size", concertsDTO.getPageSize());
                 concertsMap.put("page_number", concertsDTO.getPageNumber());
                 concertsMap.put("page_count", concertsDTO.getPageCount());
                 concertsMap.put("concerts", concertsDTO.getConcerts());
             } else {
-                statusNotFound(concertsMap, "There are no concerts found.");
+                concertsMap.putAll(statusNotFound("There are no concerts found."));
             }
         } else {
-            statusUnauthorized(concertsMap);
+            concertsMap.putAll(statusUnauthorized());
         }
 
         return JSONValue.toJSONString(concertsMap);
@@ -75,13 +75,13 @@ public class ConcertsDAO extends BaseDAO implements ConcertsDAOInterface {
             ConcertsDTO concertsDTO = concertsResource.getConcertResource(id);
 
             if(concertsDTO.getConcerts() != null) {
-                statusOk(concertMap);
+                concertMap.putAll((statusOk()));
                 concertMap.put("concert", concertsDTO.getConcerts());
             } else {
-                statusNotFound(concertMap, "Concert not found.");
+                concertMap.putAll(statusNotFound("Concert not found."));
             }
         } else {
-            statusUnauthorized(concertMap);
+            concertMap.putAll(statusUnauthorized());
         }
 
         return JSONValue.toJSONString(concertMap);

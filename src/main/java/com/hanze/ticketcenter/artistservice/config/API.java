@@ -11,7 +11,7 @@ public class API {
     /**
      * The API key.
      */
-    private static final String API_KEY = "9zC@@~z3X9bD23:R56lz(UJGC>Ldz2wX";
+    private static final String API_KEY = "pz76SUD2HE36689AMzF0A2m9pZrk2fUZ";
 
     /**
      * Get the API key.

@@ -2,6 +2,7 @@ package com.hanze.ticketcenter.artistservice.dao;
 
 import com.hanze.ticketcenter.artistservice.config.API;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -21,17 +22,6 @@ abstract public class BaseDAO {
     private final API api = new API();
 
     /**
-     * Get concerts from the concerts resource.
-     *
-     * @param apiKey            The api key to identify.
-     * @param location          The location to filter.
-     * @param pageSize          The amount of concerts to display.
-     * @param pageNumber        The current page.
-     * @return                  Concerts.
-     * @see                     #concertsResource
-     */
-
-    /**
      * Identify if the API key is valid.
      *
      * @param apiKey            The API key to identify.
@@ -42,35 +32,44 @@ abstract public class BaseDAO {
     }
 
     /**
-     * Fills the map with status unauthorized information.
+     * Information about the status unauthorized.
      *
-     * @param map               The map to fill.
+     * @return                  Status unauthorized information.
      */
-    protected void statusUnauthorized(Map<String, Object> map) {
+    protected Map<String, Object> statusUnauthorized() {
+        Map<String, Object> map = new LinkedHashMap<>();
         map.put("status", 401);
         map.put("message", "Unauthorized");
         map.put("description", "A valid API key is required.");
+
+        return map;
     }
 
     /**
-     * Fills the map with status ok information.
+     * Information about the status ok.
      *
-     * @param map               The map to fill.
+     * @return                  Status ok information.
      */
-    protected void statusOk(Map<String, Object> map) {
+    protected Map<String, Object> statusOk() {
+        Map<String, Object> map = new LinkedHashMap<>();
         map.put("status", 200);
         map.put("message", "OK");
+
+        return map;
     }
 
     /**
-     * Fills the map with status not found information.
+     * Information about the status not found.
      *
-     * @param map               The map to fill.
      * @param description       The description of the status.
+     * @return                  Status not found information.
      */
-    protected void statusNotFound(Map<String, Object> map, String description) {
+    protected Map<String, Object> statusNotFound(String description) {
+        Map<String, Object> map = new LinkedHashMap<>();
         map.put("status", 404);
         map.put("message", "Not Found");
         map.put("description", description);
+
+        return map;
     }
 }

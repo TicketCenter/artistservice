@@ -114,6 +114,7 @@ public class ArtistsParser {
 
         if(artist != null) {
             newArtist.put("name", artist.get("name"));
+            newArtist.put("image", "todo"); // TODO
         } else {
             newArtist = null;
         }
@@ -135,6 +136,7 @@ public class ArtistsParser {
             newArtist.put("name", artist.get("name"));
             newArtist.put("biography", bio.get("content"));
             newArtist.put("birth_year", bio.get("yearformed"));
+            newArtist.put("image", "todo"); // TODO
         } else {
             newArtist = null;
         }
