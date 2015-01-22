@@ -77,7 +77,7 @@ public class ArtistsParser {
      * @param artists           The artists to parse.
      * @return                  Parsed artists.
      */
-    private Map parseArtistMatches(JSONObject artists) {
+    private Map<String, List> parseArtistMatches(JSONObject artists) {
         Map<String, List> newArtists = new LinkedHashMap<>();
 
         if(artists != null) {
@@ -109,12 +109,12 @@ public class ArtistsParser {
      * @param artist            The artist to parse.
      * @return                  A parsed artist.
      */
-    private Map parseArtistsArtist(JSONObject artist) {
+    private Map<String, Object> parseArtistsArtist(JSONObject artist) {
         Map<String, Object> newArtist = new LinkedHashMap<>();
 
         if(artist != null) {
             newArtist.put("name", artist.get("name"));
-            newArtist.put("image", "todo"); // TODO
+            newArtist.put("image", parseImage((JSONObject) ((JSONArray) artist.get("image")).get(1)));
         } else {
             newArtist = null;
         }
@@ -128,7 +128,7 @@ public class ArtistsParser {
      * @param artist            The artist to parse.
      * @return                  A parsed artist.
      */
-    private Map parseArtistArtist(JSONObject artist) {
+    private Map<String, Object> parseArtistArtist(JSONObject artist) {
         Map<String, Object> newArtist = new LinkedHashMap<>();
 
         if(artist != null) {
@@ -136,12 +136,30 @@ public class ArtistsParser {
             newArtist.put("name", artist.get("name"));
             newArtist.put("biography", bio.get("content"));
             newArtist.put("birth_year", bio.get("yearformed"));
-            newArtist.put("image", "todo"); // TODO
+            newArtist.put("image", parseImage((JSONObject) ((JSONArray) artist.get("image")).get(1)));
         } else {
             newArtist = null;
         }
 
         return newArtist;
+    }
+
+    /**
+     * Parse an image into a map.
+     *
+     * @param image             The image to parse.
+     * @return                  A parsed image.
+     */
+    private Map<String, Object> parseImage(JSONObject image) {
+        Map<String, Object> newImage = new LinkedHashMap<>();
+
+        if(image != null) {
+            newImage.put("url", image.get("#text"));
+        } else {
+            newImage = null;
+        }
+
+        return newImage;
     }
 
     /**

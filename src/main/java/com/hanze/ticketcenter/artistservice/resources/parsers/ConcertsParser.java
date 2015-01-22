@@ -73,7 +73,7 @@ public class ConcertsParser {
      * @param events            The events to parse.
      * @return                  Parsed events.
      */
-    private Map parseEvents(JSONObject events) {
+    private Map<String, List> parseEvents(JSONObject events) {
         Map<String, List> newConcerts = new LinkedHashMap<>();
 
         if(events != null) {
@@ -105,7 +105,7 @@ public class ConcertsParser {
      * @param event             The event to parse.
      * @return                  A parsed event.
      */
-    private Map parseConcertsEvent(JSONObject event) {
+    private Map<String, Object> parseConcertsEvent(JSONObject event) {
         Map<String, Object> newConcert = new LinkedHashMap<>();
 
         if(event != null) {
@@ -113,7 +113,7 @@ public class ConcertsParser {
             newConcert.put("title", event.get("title"));
             newConcert.put("description", event.get("description"));
             newConcert.put("artists", parsePerformers((JSONObject) event.get("performers")));
-            newConcert.put("image", "todo");  // TODO
+            newConcert.put("image", parseImage((JSONObject) event.get("image")));
             newConcert.put("country", event.get("country_name"));
             newConcert.put("region", event.get("region_name"));
             newConcert.put("city", event.get("city_name"));
@@ -134,7 +134,7 @@ public class ConcertsParser {
      * @param event             The event to parse.
      * @return                  A parsed event.
      */
-    private Map parseConcertEvent(JSONObject event) {
+    private Map<String, Object> parseConcertEvent(JSONObject event) {
         Map<String, Object> newConcert = new LinkedHashMap<>();
 
         if(event != null) {
@@ -142,7 +142,7 @@ public class ConcertsParser {
             newConcert.put("title", event.get("title"));
             newConcert.put("description", event.get("description"));
             newConcert.put("artists", parsePerformers((JSONObject) event.get("performers")));
-            newConcert.put("image", "todo"); // TODO
+            newConcert.put("image", parseImages((JSONObject) event.get("images")));
             newConcert.put("country", event.get("country"));
             newConcert.put("region", event.get("region"));
             newConcert.put("city", event.get("city"));
@@ -163,7 +163,7 @@ public class ConcertsParser {
      * @param performers        The performers to parse.
      * @return                  Parsed performers.
      */
-    private Map parsePerformers(JSONObject performers) {
+    private Map<String, List> parsePerformers(JSONObject performers) {
         Map<String, List> newArtists = new LinkedHashMap<>();
 
         if(performers != null) {
@@ -205,6 +205,45 @@ public class ConcertsParser {
         }
 
         return newArtist;
+    }
+
+
+    private Map<String, Object> parseImages(JSONObject images) {
+        Map<String, Object> newImage = new LinkedHashMap<>();
+
+        if(images != null) {
+            Object image = images.get("image");
+
+            if(image instanceof JSONObject) {
+                JSONObject imageJsonObject = (JSONObject) image;
+                newImage.putAll(parseImage(imageJsonObject));
+            } else if(image instanceof JSONArray) {
+                JSONArray imageJsonArray = (JSONArray) image;
+                newImage.putAll(parseImage((JSONObject) imageJsonArray.get(0)));
+            }
+        } else {
+            newImage = null;
+        }
+
+        return newImage;
+    }
+
+    /**
+     * Parse an image into a map.
+     *
+     * @param image             The image to parse.
+     * @return                  A parsed image.
+     */
+    private Map<String, Object> parseImage(JSONObject image) {
+        Map<String, Object> newImage = new LinkedHashMap<>();
+
+        if(image != null) {
+            newImage.put("url", image.get("url"));
+        } else {
+            newImage = null;
+        }
+
+        return newImage;
     }
 
     /**
