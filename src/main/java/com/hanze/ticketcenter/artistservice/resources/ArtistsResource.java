@@ -2,6 +2,7 @@ package com.hanze.ticketcenter.artistservice.resources;
 
 import com.hanze.ticketcenter.artistservice.dto.ArtistsDTO;
 import com.hanze.ticketcenter.artistservice.resources.parsers.ArtistsParser;
+import com.hanze.ticketcenter.artistservice.resources.services.LastFM;
 
 import javax.annotation.Resource;
 import java.util.LinkedHashMap;
@@ -26,7 +27,7 @@ public class ArtistsResource {
     /**
      * The LastFm service.
      *
-     * @see LastFM
+     * @see com.hanze.ticketcenter.artistservice.resources.services.LastFM
      */
     private final LastFM lastFM = new LastFM();
 

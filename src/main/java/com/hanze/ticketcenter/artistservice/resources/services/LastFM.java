@@ -1,4 +1,4 @@
-package com.hanze.ticketcenter.artistservice.resources;
+package com.hanze.ticketcenter.artistservice.resources.services;
 
 import com.hanze.ticketcenter.artistservice.resources.services.utils.Reader;
 
