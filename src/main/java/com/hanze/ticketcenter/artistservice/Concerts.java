@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * The concerts resource.
  *
- * @author      Nils
+ * @author      Nils Berlijn
  * @version     1.0
  * @since       1.0
  */
@@ -28,8 +28,8 @@ public class Concerts {
      * Get concerts from the Concerts DAO.
      *
      * @param apiKey            The api key to identify.
-     * @param location          The location to filter.
-     * @param pageSize          The amount of concerts to display.
+     * @param location          The location to filter by.
+     * @param pageSize          The amount of concerts to show per page.
      * @param pageNumber        The current page.
      * @return                  Concerts.
      * @see                     #concertsDAO

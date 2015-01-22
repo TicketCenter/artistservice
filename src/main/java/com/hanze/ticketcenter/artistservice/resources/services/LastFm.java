@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * LastFM service.
  *
- * @author      Nils
+ * @author      Nils Berlijn
  * @version     1.0
  * @since       1.0
  */

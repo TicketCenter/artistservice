@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * The artists resource.
  *
- * @author      Nils
+ * @author      Nils Berlijn
  * @version     1.0
  * @since       1.0
  */
@@ -28,8 +28,8 @@ public class Artists {
      * Get artists from the artists DAO.
      *
      * @param apiKey            The api key to identify.
-     * @param characters        The characters to filter.
-     * @param pageSize          The amount of concerts to display.
+     * @param characters        The characters to filter by.
+     * @param pageSize          The amount of artists to show per page.
      * @param pageNumber        The current page.
      * @return                  Artists.
      * @see                     #artistsDAO

@@ -3,7 +3,7 @@ package com.hanze.ticketcenter.artistservice.config;
 /**
  * The API config.
  *
- * @author      Nils
+ * @author      Nils Berlijn
  * @version     1.0
  * @since       1.0
  */

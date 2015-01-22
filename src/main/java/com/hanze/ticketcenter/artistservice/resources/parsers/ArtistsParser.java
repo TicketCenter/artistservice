@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * The artists parser.
  *
- * @author      Nils
+ * @author      Nils Berlijn
  * @version     1.0
  * @since       1.0
  */

@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * The artists DAO.
  *
- * @author      Nils
+ * @author      Nils Berlijn
  * @version     1.0
  * @since       1.0
  */
@@ -29,8 +29,8 @@ public class ArtistsDAO extends BaseDAO implements ArtistsDAOInterface {
      * Get artists from the artists resource.
      *
      * @param apiKey            The api key to identify.
-     * @param characters        The characters to filter.
-     * @param pageSize          The amount of concerts to display.
+     * @param characters        The characters to filter by.
+     * @param pageSize          The amount of artists to show per page.
      * @param pageNumber        The current page.
      * @return                  Artists.
      * @see                     #artistsResource

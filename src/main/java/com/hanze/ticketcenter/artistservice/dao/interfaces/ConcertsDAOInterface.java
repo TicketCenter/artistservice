@@ -3,7 +3,7 @@ package com.hanze.ticketcenter.artistservice.dao.interfaces;
 /**
  * The concerts DAO interface.
  *
- * @author      Nils
+ * @author      Nils Berlijn
  * @version     1.0
  * @since       1.0
  */
@@ -12,8 +12,8 @@ public interface ConcertsDAOInterface {
      * Get concerts from the concerts resource.
      *
      * @param apiKey            The api key to identify.
-     * @param location          The location to filter.
-     * @param pageSize          The amount of concerts to display.
+     * @param location          The location to filter by.
+     * @param pageSize          The amount of concerts to show per page.
      * @param pageNumber        The current page.
      * @return                  Concerts.
      */

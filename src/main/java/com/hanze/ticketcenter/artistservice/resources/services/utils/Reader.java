@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * The reader.
  *
- * @author      Nils
+ * @author      Nils Berlijn
  * @version     1.0
  * @since       1.0
  */

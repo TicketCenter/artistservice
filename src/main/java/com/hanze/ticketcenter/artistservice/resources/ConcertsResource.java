@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * The concerts resource.
  *
- * @author      Nils
+ * @author      Nils Berlijn
  * @version     1.0
  * @since       1.0
  */
@@ -34,8 +34,8 @@ public class ConcertsResource {
     /**
      * Get concerts parsed from the Eventful service.
      *
-     * @param location          The location to filter.
-     * @param pageSize          The amount of concerts to display.
+     * @param location          The location to filter by.
+     * @param pageSize          The amount of concerts to show per page.
      * @param pageNumber        The current page.
      * @return                  Concerts.
      * @see                     #eventful

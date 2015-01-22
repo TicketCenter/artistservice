@@ -1,4 +1,5 @@
 com.hanze.ticketcenter.artistservice
+com.hanze.ticketcenter.artistservice.config
 com.hanze.ticketcenter.artistservice.dao
 com.hanze.ticketcenter.artistservice.dao.interfaces
 com.hanze.ticketcenter.artistservice.dto

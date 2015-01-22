@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * The concerts parser.
  *
- * @author      Nils
+ * @author      Nils Berlijn
  * @version     1.0
  * @since       1.0
  */
