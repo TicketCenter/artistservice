@@ -18,13 +18,6 @@ import java.util.Map;
 @Resource(name="ArtistsResource")
 public class ArtistsResource {
     /**
-     * The LastFM service.
-     *
-     * @see com.hanze.ticketcenter.artistservice.resources.services.LastFm
-     */
-    private final LastFm lastFm = new LastFm();
-
-    /**
      * The artists parser.
      *
      * @see com.hanze.ticketcenter.artistservice.resources.parsers.ArtistsParser
@@ -32,14 +25,21 @@ public class ArtistsResource {
     private final ArtistsParser artistsParser = new ArtistsParser();
 
     /**
-     * Get artists parsed from the LastFM service.
+     * The LastFm service.
+     *
+     * @see com.hanze.ticketcenter.artistservice.resources.services.LastFm
+     */
+    private final LastFm lastFm = new LastFm();
+
+    /**
+     * Get artists parsed from the LastFm service.
      *
      * @param characters        The characters to filter by.
      * @param pageSize          The amount of artists to show per page.
      * @param pageNumber        The current page.
      * @return                  Artists.
-     * @see                     #lastFm
      * @see                     #artistsParser
+     * @see                     #lastFm
      */
     @Resource
     public ArtistsDTO getArtistsResource(String characters, Integer pageSize, Integer pageNumber) {
@@ -52,12 +52,12 @@ public class ArtistsResource {
     }
 
     /**
-     * Get an artist parsed from the LastFM service.
+     * Get an artist parsed from the LastFm service.
      *
      * @param name              The name of the artist.
      * @return                  An artist.
-     * @see                     #lastFm
      * @see                     #artistsParser
+     * @see                     #lastFm
      */
     @Resource
     public ArtistsDTO getArtistResource(String name) {
