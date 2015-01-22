@@ -2,7 +2,6 @@ package com.hanze.ticketcenter.artistservice.resources;
 
 import com.hanze.ticketcenter.artistservice.dto.ArtistsDTO;
 import com.hanze.ticketcenter.artistservice.resources.parsers.ArtistsParser;
-import com.hanze.ticketcenter.artistservice.resources.services.LastFm;
 
 import javax.annotation.Resource;
 import java.util.LinkedHashMap;
@@ -27,19 +26,19 @@ public class ArtistsResource {
     /**
      * The LastFm service.
      *
-     * @see com.hanze.ticketcenter.artistservice.resources.services.LastFm
+     * @see LastFM
      */
-    private final LastFm lastFm = new LastFm();
+    private final LastFM lastFM = new LastFM();
 
     /**
-     * Get artists parsed from the LastFm service.
+     * Get artists parsed from the LastFM service.
      *
      * @param characters        The characters to filter by.
      * @param pageSize          The amount of artists to show per page.
      * @param pageNumber        The current page.
      * @return                  Artists.
      * @see                     #artistsParser
-     * @see                     #lastFm
+     * @see                     #lastFM
      */
     @Resource
     public ArtistsDTO getArtistsResource(String characters, Integer pageSize, Integer pageNumber) {
@@ -48,22 +47,22 @@ public class ArtistsResource {
         parameters.put("limit", pageSize);
         parameters.put("page", pageNumber);
 
-        return artistsParser.parseArtists(lastFm.get("artist", "search", parameters));
+        return artistsParser.parseArtists(lastFM.get("artist", "search", parameters));
     }
 
     /**
-     * Get an artist parsed from the LastFm service.
+     * Get an artist parsed from the LastFM service.
      *
      * @param name              The name of the artist.
      * @return                  An artist.
      * @see                     #artistsParser
-     * @see                     #lastFm
+     * @see                     #lastFM
      */
     @Resource
     public ArtistsDTO getArtistResource(String name) {
         Map<String, String> parameters = new LinkedHashMap<>();
         parameters.put("artist", name);
 
-        return artistsParser.parseArtist(lastFm.get("artist", "getinfo", parameters));
+        return artistsParser.parseArtist(lastFM.get("artist", "getinfo", parameters));
     }
 }
