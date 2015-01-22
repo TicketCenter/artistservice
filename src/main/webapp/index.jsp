@@ -203,6 +203,9 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <p class="text-muted">TicketCenter &copy; 2015</p>
+    </div>
 </div>
 </body>
 </html>
