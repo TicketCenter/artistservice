@@ -45,7 +45,7 @@
                             <tbody>
                             <tr>
                                 <td><kbd>GET</kbd></td>
-                                <td><a href="/api/concerts?api_key={api_key}" target="_blank">/api/concerts</a></td>
+                                <td><a href="/api/concerts" target="_blank">/api/concerts</a></td>
                                 <td><a href="/api/concerts?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
                                 <td></td>
                                 <td>Get concerts.</td>
@@ -54,21 +54,21 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/concerts?api_key={api_key}&location=Netherlands" target="_blank">location={location}</a></td>
+                                <td><a href="/api/concerts?api_key={api_key}&location={location}" target="_blank">location={location}</a></td>
                                 <td>Get concerts filtered on location.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/concerts?api_key={api_key}&page_size=10" target="_blank">page_size={page_size}</a></td>
+                                <td><a href="/api/concerts?api_key={api_key}&page_size={page_size}" target="_blank">page_size={page_size}</a></td>
                                 <td>Get concerts filtered on page size.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/concerts?api_key={api_key}&page_number=1" target="_blank">page_number={page_number}</a></td>
+                                <td><a href="/api/concerts?api_key={api_key}&page_number={page_number}" target="_blank">page_number={page_number}</a></td>
                                 <td>Get concerts filtered on page number</td>
                             </tr>
                             </tbody>
@@ -100,8 +100,8 @@
                             <tbody>
                             <tr>
                                 <td><kbd>GET</kbd></td>
-                                <td><a href="/api/concerts/E0-001-075694702-5?api_key={api_key}" target="_blank">/api/concerts/{id}</a></td>
-                                <td><a href="/api/concerts/E0-001-075694702-5?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
+                                <td><a href="/api/concerts/{id}" target="_blank">/api/concerts/{id}</a></td>
+                                <td><a href="/api/concerts/{id}?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
                                 <td>Get a concert.</td>
                             </tr>
                             </tbody>
@@ -137,7 +137,7 @@
                             <tbody>
                             <tr>
                                 <td><kbd>GET</kbd></td>
-                                <td><a href="/api/artists?api_key={api_key}" target="_blank">/api/artists</a></td>
+                                <td><a href="/api/artists" target="_blank">/api/artists</a></td>
                                 <td><a href="/api/artists?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
                                 <td></td>
                                 <td>Get artists (filtered on character <em>a</em> by default).</td>
@@ -146,21 +146,21 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/artists?api_key={api_key}&characters=a" target="_blank">characters={characters}</a></td>
+                                <td><a href="/api/artists?api_key={api_key}&characters={characters}" target="_blank">characters={characters}</a></td>
                                 <td>Get artists filtered on characters.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/artists?api_key={api_key}&page_size=10" target="_blank">page_size={page_size}</a></td>
+                                <td><a href="/api/artists?api_key={api_key}&page_size={page_size}" target="_blank">page_size={page_size}</a></td>
                                 <td>Get artists filtered on page size.</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td><a href="/api/artists?api_key={api_key}&page_number=1" target="_blank">page_number={page_number}</a></td>
+                                <td><a href="/api/artists?api_key={api_key}&page_number={page_number}" target="_blank">page_number={page_number}</a></td>
                                 <td>Get artists filtered on page number</td>
                             </tr>
                             </tbody>
@@ -191,8 +191,8 @@
                             <tbody>
                             <tr>
                                 <td><kbd>GET</kbd></td>
-                                <td><a href="/api/artists/Cher?api_key={api_key}" target="_blank">/api/artists/{name}</a></td>
-                                <td><a href="/api/artists/Cher?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
+                                <td><a href="/api/artists/{name}" target="_blank">/api/artists/{name}</a></td>
+                                <td><a href="/api/artists/{name}?api_key={api_key}" target="_blank">?api_key={api_key}</a></td>
                                 <td>Get an artist.</td>
                             </tr>
                             </tbody>
