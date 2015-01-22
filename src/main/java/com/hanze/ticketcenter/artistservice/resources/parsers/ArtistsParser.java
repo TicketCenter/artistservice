@@ -14,17 +14,17 @@ import java.util.Map;
 /**
  * The artists parser.
  *
- * @author      Nils Berlijn
- * @version     1.0
- * @since       1.0
+ * @author Nils Berlijn
+ * @version 1.0
+ * @since 1.0
  */
 public class ArtistsParser {
     /**
      * Parse artists into an artists DTO.
      *
-     * @param artists           The artists to parse.
-     * @return                  An artists DTO.
-     * @see                     com.hanze.ticketcenter.artistservice.dto.ArtistsDTO
+     * @param artists The artists to parse.
+     * @return An artists DTO.
+     * @see com.hanze.ticketcenter.artistservice.dto.ArtistsDTO
      */
     public ArtistsDTO parseArtists(String artists) {
         ArtistsDTO artistsDTO = new ArtistsDTO();
@@ -34,14 +34,14 @@ public class ArtistsParser {
             JSONObject results = (JSONObject) oldArtists.get("results");
             JSONObject query = (JSONObject) results.get("opensearch:Query");
 
-            if(!results.get("opensearch:totalResults").equals("0")) {
+            if (!results.get("opensearch:totalResults").equals("0")) {
                 artistsDTO.setTotalItems(Integer.parseInt((String) results.get("opensearch:totalResults")));
                 artistsDTO.setPageSize(Integer.parseInt((String) results.get("opensearch:itemsPerPage")));
                 artistsDTO.setPageNumber(Integer.parseInt((String) query.get("startPage")));
                 artistsDTO.setPageCount(parsePageCount((String) results.get("opensearch:totalResults"), (String) results.get("opensearch:itemsPerPage")));
                 artistsDTO.setArtists(parseArtistMatches((JSONObject) results.get("artistmatches")));
             }
-        } catch(ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 
@@ -51,9 +51,9 @@ public class ArtistsParser {
     /**
      * Parse an artist into an artists DTO.
      *
-     * @param artist            The artist to parse.
-     * @return                  An artists DTO.
-     * @see                     com.hanze.ticketcenter.artistservice.dto.ArtistsDTO
+     * @param artist The artist to parse.
+     * @return An artists DTO.
+     * @see com.hanze.ticketcenter.artistservice.dto.ArtistsDTO
      */
     public ArtistsDTO parseArtist(String artist) {
         ArtistsDTO artistsDTO = new ArtistsDTO();
@@ -61,10 +61,10 @@ public class ArtistsParser {
         try {
             JSONObject oldArtist = (JSONObject) new JSONParser().parse(artist);
 
-            if(oldArtist.get("error") == null) {
+            if (oldArtist.get("error") == null) {
                 artistsDTO.setArtists(parseArtistArtist((JSONObject) oldArtist.get("artist")));
             }
-        } catch(ParseException e) {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 
@@ -74,23 +74,23 @@ public class ArtistsParser {
     /**
      * Parse artists into a map.
      *
-     * @param artists           The artists to parse.
-     * @return                  Parsed artists.
+     * @param artists The artists to parse.
+     * @return Parsed artists.
      */
     private Map<String, List> parseArtistMatches(JSONObject artists) {
         Map<String, List> newArtists = new LinkedHashMap<>();
 
-        if(artists != null) {
+        if (artists != null) {
             Object artist = artists.get("artist");
             List<Map> newArtistsList = new LinkedList<>();
 
-            if(artist instanceof JSONObject) {
+            if (artist instanceof JSONObject) {
                 JSONObject artistJsonObject = (JSONObject) artist;
                 newArtistsList.add(parseArtistsArtist(artistJsonObject));
-            } else if(artist instanceof JSONArray) {
+            } else if (artist instanceof JSONArray) {
                 JSONArray artistJsonArray = (JSONArray) artist;
 
-                for(Object eventJsonObject : artistJsonArray) {
+                for (Object eventJsonObject : artistJsonArray) {
                     newArtistsList.add(parseArtistsArtist((JSONObject) eventJsonObject));
                 }
             }
@@ -106,13 +106,13 @@ public class ArtistsParser {
     /**
      * Parse an artist into a map.
      *
-     * @param artist            The artist to parse.
-     * @return                  A parsed artist.
+     * @param artist The artist to parse.
+     * @return A parsed artist.
      */
     private Map<String, Object> parseArtistsArtist(JSONObject artist) {
         Map<String, Object> newArtist = new LinkedHashMap<>();
 
-        if(artist != null) {
+        if (artist != null) {
             newArtist.put("name", artist.get("name"));
             newArtist.put("image", parseImage((JSONObject) ((JSONArray) artist.get("image")).get(1)));
         } else {
@@ -125,13 +125,13 @@ public class ArtistsParser {
     /**
      * Parse an artist into a map.
      *
-     * @param artist            The artist to parse.
-     * @return                  A parsed artist.
+     * @param artist The artist to parse.
+     * @return A parsed artist.
      */
     private Map<String, Object> parseArtistArtist(JSONObject artist) {
         Map<String, Object> newArtist = new LinkedHashMap<>();
 
-        if(artist != null) {
+        if (artist != null) {
             JSONObject bio = (JSONObject) artist.get("bio");
             newArtist.put("name", artist.get("name"));
             newArtist.put("biography", bio.get("content"));
@@ -147,13 +147,13 @@ public class ArtistsParser {
     /**
      * Parse an image into a map.
      *
-     * @param image             The image to parse.
-     * @return                  A parsed image.
+     * @param image The image to parse.
+     * @return A parsed image.
      */
     private Map<String, Object> parseImage(JSONObject image) {
         Map<String, Object> newImage = new LinkedHashMap<>();
 
-        if(image != null) {
+        if (image != null) {
             newImage.put("url", image.get("#text"));
         } else {
             newImage = null;
@@ -165,9 +165,9 @@ public class ArtistsParser {
     /**
      * Parse total items and page number into a integer as page count.
      *
-     * @param totalItems        The tickets available to parse.
-     * @param pageNumber        The tickets available to parse.
-     * @return                  The page count.
+     * @param totalItems The tickets available to parse.
+     * @param pageNumber The tickets available to parse.
+     * @return The page count.
      */
     private Integer parsePageCount(String totalItems, String pageNumber) {
         return Integer.parseInt(totalItems) / Integer.parseInt(pageNumber);

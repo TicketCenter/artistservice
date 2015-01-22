@@ -12,9 +12,9 @@ import java.util.Map;
 /**
  * The concerts DAO.
  *
- * @author      Nils Berlijn
- * @version     1.0
- * @since       1.0
+ * @author Nils Berlijn
+ * @version 1.0
+ * @since 1.0
  */
 public class ConcertsDAO extends BaseDAO implements ConcertsDAOInterface {
     /**
@@ -22,27 +22,27 @@ public class ConcertsDAO extends BaseDAO implements ConcertsDAOInterface {
      *
      * @see com.hanze.ticketcenter.artistservice.resources.ConcertsResource
      */
-    @Resource(name="ConcertsResource")
+    @Resource(name = "ConcertsResource")
     private final ConcertsResource concertsResource = new ConcertsResource();
 
     /**
      * Get concerts from the concerts resource.
      *
-     * @param apiKey            The api key to identify.
-     * @param location          The location to filter by.
-     * @param pageSize          The amount of concerts to show per page.
-     * @param pageNumber        The current page.
-     * @return                  Concerts.
-     * @see                     #concertsResource
+     * @param apiKey     The api key to identify.
+     * @param location   The location to filter by.
+     * @param pageSize   The amount of concerts to show per page.
+     * @param pageNumber The current page.
+     * @return Concerts.
+     * @see #concertsResource
      */
     @Override
     public String getConcerts(String apiKey, String location, Integer pageSize, Integer pageNumber) {
         Map<String, Object> concertsMap = new LinkedHashMap<>();
 
-        if(authenticate(apiKey)) {
+        if (authenticate(apiKey)) {
             ConcertsDTO concertsDTO = concertsResource.getConcertsResource(location, pageSize, pageNumber);
 
-            if(concertsDTO.getConcerts() != null) {
+            if (concertsDTO.getConcerts() != null) {
                 concertsMap.putAll(statusOk());
                 concertsMap.put("total_items", concertsDTO.getTotalItems());
                 concertsMap.put("page_size", concertsDTO.getPageSize());
@@ -62,19 +62,19 @@ public class ConcertsDAO extends BaseDAO implements ConcertsDAOInterface {
     /**
      * Get a concert from the concerts resource.
      *
-     * @param apiKey            The api key to identify.
-     * @param id                The id of the concert.
-     * @return                  A concert.
-     * @see                     #concertsResource
+     * @param apiKey The api key to identify.
+     * @param id     The id of the concert.
+     * @return A concert.
+     * @see #concertsResource
      */
     @Override
     public String getConcert(String apiKey, String id) {
         Map<String, Object> concertMap = new LinkedHashMap<>();
 
-        if(authenticate(apiKey)) {
+        if (authenticate(apiKey)) {
             ConcertsDTO concertsDTO = concertsResource.getConcertResource(id);
 
-            if(concertsDTO.getConcerts() != null) {
+            if (concertsDTO.getConcerts() != null) {
                 concertMap.putAll((statusOk()));
                 concertMap.put("concert", concertsDTO.getConcerts());
             } else {

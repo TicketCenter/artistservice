@@ -8,9 +8,9 @@ import java.util.Map;
 /**
  * The base DAO.
  *
- * @author      Nils Berlijn
- * @version     1.0
- * @since       1.0
+ * @author Nils Berlijn
+ * @version 1.0
+ * @since 1.0
  */
 @SuppressWarnings("WeakerAccess")
 abstract public class BaseDAO {
@@ -24,8 +24,8 @@ abstract public class BaseDAO {
     /**
      * Identify if the API key is valid.
      *
-     * @param apiKey            The API key to identify.
-     * @return                  If the API key is valid.
+     * @param apiKey The API key to identify.
+     * @return If the API key is valid.
      */
     protected boolean authenticate(String apiKey) {
         return apiKey.equals(api.getApiKey());
@@ -34,7 +34,7 @@ abstract public class BaseDAO {
     /**
      * Information about the status unauthorized.
      *
-     * @return                  Status unauthorized information.
+     * @return Status unauthorized information.
      */
     protected Map<String, Object> statusUnauthorized() {
         Map<String, Object> map = new LinkedHashMap<>();
@@ -48,7 +48,7 @@ abstract public class BaseDAO {
     /**
      * Information about the status ok.
      *
-     * @return                  Status ok information.
+     * @return Status ok information.
      */
     protected Map<String, Object> statusOk() {
         Map<String, Object> map = new LinkedHashMap<>();
@@ -61,8 +61,8 @@ abstract public class BaseDAO {
     /**
      * Information about the status not found.
      *
-     * @param description       The description of the status.
-     * @return                  Status not found information.
+     * @param description The description of the status.
+     * @return Status not found information.
      */
     protected Map<String, Object> statusNotFound(String description) {
         Map<String, Object> map = new LinkedHashMap<>();

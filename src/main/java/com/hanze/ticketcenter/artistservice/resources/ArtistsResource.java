@@ -11,11 +11,11 @@ import java.util.Map;
 /**
  * The artists resource.
  *
- * @author      Nils Berlijn
- * @version     1.0
- * @since       1.0
+ * @author Nils Berlijn
+ * @version 1.0
+ * @since 1.0
  */
-@Resource(name="ArtistsResource")
+@Resource(name = "ArtistsResource")
 public class ArtistsResource {
     /**
      * The artists parser.
@@ -34,12 +34,12 @@ public class ArtistsResource {
     /**
      * Get artists parsed from the LastFM service.
      *
-     * @param characters        The characters to filter by.
-     * @param pageSize          The amount of artists to show per page.
-     * @param pageNumber        The current page.
-     * @return                  Artists.
-     * @see                     #artistsParser
-     * @see                     #lastFM
+     * @param characters The characters to filter by.
+     * @param pageSize   The amount of artists to show per page.
+     * @param pageNumber The current page.
+     * @return Artists.
+     * @see #artistsParser
+     * @see #lastFM
      */
     @Resource
     public ArtistsDTO getArtistsResource(String characters, Integer pageSize, Integer pageNumber) {
@@ -54,10 +54,10 @@ public class ArtistsResource {
     /**
      * Get an artist parsed from the LastFM service.
      *
-     * @param name              The name of the artist.
-     * @return                  An artist.
-     * @see                     #artistsParser
-     * @see                     #lastFM
+     * @param name The name of the artist.
+     * @return An artist.
+     * @see #artistsParser
+     * @see #lastFM
      */
     @Resource
     public ArtistsDTO getArtistResource(String name) {
