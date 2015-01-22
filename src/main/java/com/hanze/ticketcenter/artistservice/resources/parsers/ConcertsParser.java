@@ -207,7 +207,30 @@ public class ConcertsParser {
         return newArtist;
     }
 
+    /**
+     * Parse an image into a map.
+     *
+     * @param image             The image to parse.
+     * @return                  A parsed image.
+     */
+    private Map<String, Object> parseImage(JSONObject image) {
+        Map<String, Object> newImage = new LinkedHashMap<>();
 
+        if(image != null) {
+            newImage.put("url", image.get("url"));
+        } else {
+            newImage = null;
+        }
+
+        return newImage;
+    }
+
+    /**
+     * Parse images into a map.
+     *
+     * @param images            The images to parse.
+     * @return                  Parsed images.
+     */
     private Map<String, Object> parseImages(JSONObject images) {
         Map<String, Object> newImage = new LinkedHashMap<>();
 
@@ -221,24 +244,6 @@ public class ConcertsParser {
                 JSONArray imageJsonArray = (JSONArray) image;
                 newImage.putAll(parseImage((JSONObject) imageJsonArray.get(0)));
             }
-        } else {
-            newImage = null;
-        }
-
-        return newImage;
-    }
-
-    /**
-     * Parse an image into a map.
-     *
-     * @param image             The image to parse.
-     * @return                  A parsed image.
-     */
-    private Map<String, Object> parseImage(JSONObject image) {
-        Map<String, Object> newImage = new LinkedHashMap<>();
-
-        if(image != null) {
-            newImage.put("url", image.get("url"));
         } else {
             newImage = null;
         }
