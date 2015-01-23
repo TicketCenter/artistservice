@@ -12,15 +12,15 @@ import java.util.Map;
 /**
  * The artists DAO.
  *
- * @author Nils Berlijn
- * @version 1.0
- * @since 1.0
+ * @author      Nils Berlijn
+ * @version     1.0
+ * @since       1.0
  */
 public class ArtistsDAO extends BaseDAO implements ArtistsDAOInterface {
     /**
      * The artists resource.
      *
-     * @see com.hanze.ticketcenter.artistservice.resources.ArtistsResource
+     * @see                     com.hanze.ticketcenter.artistservice.resources.ArtistsResource
      */
     @Resource(name = "ArtistsResource")
     private final ArtistsResource artistsResource = new ArtistsResource();
@@ -28,10 +28,10 @@ public class ArtistsDAO extends BaseDAO implements ArtistsDAOInterface {
     /**
      * Get artists from the artists resource.
      *
-     * @param apiKey     The api key to identify.
-     * @param characters The characters to filter by.
-     * @param pageSize   The amount of artists to show per page.
-     * @param pageNumber The current page.
+     * @param apiKey            The api key to identify.
+     * @param characters        The characters to filter by.
+     * @param pageSize          The amount of artists to show per page.
+     * @param pageNumber        The current page.
      * @return Artists.
      * @see #artistsResource
      */
@@ -62,10 +62,10 @@ public class ArtistsDAO extends BaseDAO implements ArtistsDAOInterface {
     /**
      * Get an artist from the artists DAO.
      *
-     * @param apiKey The api key to identify.
-     * @param name   The name of the artist.
-     * @return An artist.
-     * @see #artistsResource
+     * @param apiKey            The api key to identify.
+     * @param name              The name of the artist.
+     * @return                  An artist.
+     * @see                     #artistsResource
      */
     @Override
     public String getArtist(String apiKey, String name) {

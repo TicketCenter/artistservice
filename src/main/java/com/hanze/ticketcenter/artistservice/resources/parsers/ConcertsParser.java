@@ -15,17 +15,17 @@ import java.util.Map;
 /**
  * The concerts parser.
  *
- * @author Nils Berlijn
- * @version 1.0
- * @since 1.0
+ * @author      Nils Berlijn
+ * @version     1.0
+ * @since       1.0
  */
 public class ConcertsParser {
     /**
      * Parse concerts into a concerts DTO.
      *
-     * @param concerts The concerts to parse.
-     * @return A concerts DTO.
-     * @see com.hanze.ticketcenter.artistservice.dto.ConcertsDTO
+     * @param concerts          The concerts to parse.
+     * @return                  A concerts DTO.
+     * @see                     com.hanze.ticketcenter.artistservice.dto.ConcertsDTO
      */
     public ConcertsDTO parseConcerts(String concerts) {
         ConcertsDTO concertsDTO = new ConcertsDTO();
@@ -50,9 +50,9 @@ public class ConcertsParser {
     /**
      * Parse a concert into a concerts DTO.
      *
-     * @param concert The concert to parse.
-     * @return A concerts DTO.
-     * @see com.hanze.ticketcenter.artistservice.dto.ConcertsDTO
+     * @param concert           The concert to parse.
+     * @return                  A concerts DTO.
+     * @see                     com.hanze.ticketcenter.artistservice.dto.ConcertsDTO
      */
     public ConcertsDTO parseConcert(String concert) {
         ConcertsDTO concertsDTO = new ConcertsDTO();
@@ -73,8 +73,8 @@ public class ConcertsParser {
     /**
      * Parse events into a map.
      *
-     * @param events The events to parse.
-     * @return Parsed events.
+     * @param events            The events to parse.
+     * @return                  Parsed events.
      */
     private Map<String, List> parseEvents(JSONObject events) {
         Map<String, List> newConcerts = new LinkedHashMap<>();
@@ -105,8 +105,8 @@ public class ConcertsParser {
     /**
      * Parse an event into a map.
      *
-     * @param event The event to parse.
-     * @return A parsed event.
+     * @param event             The event to parse.
+     * @return                  A parsed event.
      */
     private Map<String, Object> parseConcertsEvent(JSONObject event) {
         Map<String, Object> newConcert = new LinkedHashMap<>();
@@ -134,8 +134,8 @@ public class ConcertsParser {
     /**
      * Parse an event into a map.
      *
-     * @param event The event to parse.
-     * @return A parsed event.
+     * @param event             The event to parse.
+     * @return                  A parsed event.
      */
     private Map<String, Object> parseConcertEvent(JSONObject event) {
         Map<String, Object> newConcert = new LinkedHashMap<>();
@@ -163,8 +163,8 @@ public class ConcertsParser {
     /**
      * Parse performers into a map.
      *
-     * @param performers The performers to parse.
-     * @return Parsed performers.
+     * @param performers        The performers to parse.
+     * @return                  Parsed performers.
      */
     private Map<String, List> parsePerformers(JSONObject performers) {
         Map<String, List> newArtists = new LinkedHashMap<>();
@@ -195,8 +195,8 @@ public class ConcertsParser {
     /**
      * Parse a performer into a map.
      *
-     * @param performer The performer to parse.
-     * @return A parsed performer.
+     * @param performer         The performer to parse.
+     * @return                  A parsed performer.
      */
     private Map parsePerformer(JSONObject performer) {
         Map<String, Object> newArtist = new LinkedHashMap<>();
@@ -213,8 +213,8 @@ public class ConcertsParser {
     /**
      * Parse an image into a map.
      *
-     * @param image The image to parse.
-     * @return A parsed image.
+     * @param image             The image to parse.
+     * @return                  A parsed image.
      */
     private Map<String, Object> parseImage(JSONObject image) {
         Map<String, Object> newImage = new LinkedHashMap<>();
@@ -231,8 +231,8 @@ public class ConcertsParser {
     /**
      * Parse images into a map.
      *
-     * @param images The images to parse.
-     * @return Parsed images.
+     * @param images            The images to parse.
+     * @return                  Parsed images.
      */
     private Map<String, Object> parseImages(JSONObject images) {
         Map<String, Object> newImage = new LinkedHashMap<>();
@@ -257,8 +257,8 @@ public class ConcertsParser {
     /**
      * Parse tickets available into a integer.
      *
-     * @param ticketsAvailable The tickets available to parse.
-     * @return The tickets available.
+     * @param ticketsAvailable  The tickets available to parse.
+     * @return                  The tickets available.
      */
     private Integer parseTicketsAvailable(String ticketsAvailable) {
         String[] split = ticketsAvailable.replace("-", "").split("\\.");
@@ -280,8 +280,8 @@ public class ConcertsParser {
     /**
      * Parse tickets price into a double.
      *
-     * @param ticketsPrice The tickets price to parse.
-     * @return The tickets price.
+     * @param ticketsPrice      The tickets price to parse.
+     * @return                  The tickets price.
      */
     private Double parseTicketPrice(String ticketsPrice) {
         String[] split = ticketsPrice.replace("-", "").split("\\.");

@@ -14,17 +14,17 @@ import java.util.Map;
 /**
  * The artists parser.
  *
- * @author Nils Berlijn
- * @version 1.0
- * @since 1.0
+ * @author      Nils Berlijn
+ * @version     1.0
+ * @since       1.0
  */
 public class ArtistsParser {
     /**
      * Parse artists into an artists DTO.
      *
-     * @param artists The artists to parse.
-     * @return An artists DTO.
-     * @see com.hanze.ticketcenter.artistservice.dto.ArtistsDTO
+     * @param artists           The artists to parse.
+     * @return                  An artists DTO.
+     * @see                     com.hanze.ticketcenter.artistservice.dto.ArtistsDTO
      */
     public ArtistsDTO parseArtists(String artists) {
         ArtistsDTO artistsDTO = new ArtistsDTO();
@@ -51,9 +51,9 @@ public class ArtistsParser {
     /**
      * Parse an artist into an artists DTO.
      *
-     * @param artist The artist to parse.
-     * @return An artists DTO.
-     * @see com.hanze.ticketcenter.artistservice.dto.ArtistsDTO
+     * @param artist            The artist to parse.
+     * @return                  An artists DTO.
+     * @see                     com.hanze.ticketcenter.artistservice.dto.ArtistsDTO
      */
     public ArtistsDTO parseArtist(String artist) {
         ArtistsDTO artistsDTO = new ArtistsDTO();
@@ -74,8 +74,8 @@ public class ArtistsParser {
     /**
      * Parse artists into a map.
      *
-     * @param artists The artists to parse.
-     * @return Parsed artists.
+     * @param artists           The artists to parse.
+     * @return                  Parsed artists.
      */
     private Map<String, List> parseArtistMatches(JSONObject artists) {
         Map<String, List> newArtists = new LinkedHashMap<>();
@@ -106,8 +106,8 @@ public class ArtistsParser {
     /**
      * Parse an artist into a map.
      *
-     * @param artist The artist to parse.
-     * @return A parsed artist.
+     * @param artist            The artist to parse.
+     * @return                  A parsed artist.
      */
     private Map<String, Object> parseArtistsArtist(JSONObject artist) {
         Map<String, Object> newArtist = new LinkedHashMap<>();
@@ -125,8 +125,8 @@ public class ArtistsParser {
     /**
      * Parse an artist into a map.
      *
-     * @param artist The artist to parse.
-     * @return A parsed artist.
+     * @param artist            The artist to parse.
+     * @return                  A parsed artist.
      */
     private Map<String, Object> parseArtistArtist(JSONObject artist) {
         Map<String, Object> newArtist = new LinkedHashMap<>();
@@ -147,8 +147,8 @@ public class ArtistsParser {
     /**
      * Parse an image into a map.
      *
-     * @param image The image to parse.
-     * @return A parsed image.
+     * @param image             The image to parse.
+     * @return                  A parsed image.
      */
     private Map<String, Object> parseImage(JSONObject image) {
         Map<String, Object> newImage = new LinkedHashMap<>();
@@ -165,9 +165,9 @@ public class ArtistsParser {
     /**
      * Parse total items and page number into a integer as page count.
      *
-     * @param totalItems The tickets available to parse.
-     * @param pageNumber The tickets available to parse.
-     * @return The page count.
+     * @param totalItems        The tickets available to parse.
+     * @param pageNumber        The tickets available to parse.
+     * @return                  The page count.
      */
     private Integer parsePageCount(String totalItems, String pageNumber) {
         return Integer.parseInt(totalItems) / Integer.parseInt(pageNumber);

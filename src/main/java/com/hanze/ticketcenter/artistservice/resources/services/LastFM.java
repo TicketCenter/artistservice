@@ -7,9 +7,9 @@ import java.util.Map;
 /**
  * LastFM service.
  *
- * @author Nils Berlijn
- * @version 1.0
- * @since 1.0
+ * @author      Nils Berlijn
+ * @version     1.0
+ * @since       1.0
  */
 public class LastFM extends Reader {
     /**
@@ -30,11 +30,11 @@ public class LastFM extends Reader {
     /**
      * Get the data from the service.
      *
-     * @param resource   The resource to get the data from.
-     * @param method     The method of the resource.
-     * @param parameters The parameters for the method.
-     * @return String.
-     * @see #read(String)
+     * @param resource          The resource to get the data from.
+     * @param method            The method of the resource.
+     * @param parameters        The parameters for the method.
+     * @return                  String.
+     * @see                     #read(String)
      */
     @SuppressWarnings("SameParameterValue")
     public String get(String resource, String method, Map parameters) {

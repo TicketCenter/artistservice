@@ -9,9 +9,9 @@ import javax.ws.rs.core.MediaType;
 /**
  * The concerts resource.
  *
- * @author Nils Berlijn
- * @version 1.0
- * @since 1.0
+ * @author      Nils Berlijn
+ * @version     1.0
+ * @since       1.0
  */
 @SuppressWarnings("WeakerAccess")
 @Path("concerts")
@@ -19,7 +19,7 @@ public class Concerts {
     /**
      * The concerts DAO.
      *
-     * @see com.hanze.ticketcenter.artistservice.dao.ConcertsDAO
+     * @see                     com.hanze.ticketcenter.artistservice.dao.ConcertsDAO
      */
     @Resource
     private final ConcertsDAO concertsDAO = new ConcertsDAO();
@@ -27,12 +27,12 @@ public class Concerts {
     /**
      * Get concerts from the Concerts DAO.
      *
-     * @param apiKey     The api key to identify.
-     * @param location   The location to filter by.
-     * @param pageSize   The amount of concerts to show per page.
-     * @param pageNumber The current page.
-     * @return Concerts.
-     * @see #concertsDAO
+     * @param apiKey            The api key to identify.
+     * @param location          The location to filter by.
+     * @param pageSize          The amount of concerts to show per page.
+     * @param pageNumber        The current page.
+     * @return                  Concerts.
+     * @see                     #concertsDAO
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -48,10 +48,10 @@ public class Concerts {
     /**
      * Get a concert from the concerts DAO.
      *
-     * @param apiKey The api key to identify.
-     * @param id     The id of the concert.
-     * @return A concert.
-     * @see #concertsDAO
+     * @param apiKey            The api key to identify.
+     * @param id                The id of the concert.
+     * @return                  A concert.
+     * @see                     #concertsDAO
      */
     @GET
     @Path("/{id}")

@@ -3,9 +3,9 @@ package com.hanze.ticketcenter.artistservice.config;
 /**
  * The API config.
  *
- * @author Nils Berlijn
- * @version 1.0
- * @since 1.0
+ * @author      Nils Berlijn
+ * @version     1.0
+ * @since       1.0
  */
 public class API {
     /**
@@ -16,7 +16,7 @@ public class API {
     /**
      * Get the API key.
      *
-     * @return An API key.
+     * @return                  An API key.
      */
     public String getApiKey() {
         return API_KEY;

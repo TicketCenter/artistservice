@@ -3,9 +3,9 @@ package com.hanze.ticketcenter.artistservice.dto;
 /**
  * The concerts DTO.
  *
- * @author Nils Berlijn
- * @version 1.0
- * @since 1.0
+ * @author      Nils Berlijn
+ * @version     1.0
+ * @since       1.0
  */
 public class ConcertsDTO {
     /**
@@ -36,7 +36,7 @@ public class ConcertsDTO {
     /**
      * Get the amount of concerts.
      *
-     * @return The amount of concerts.
+     * @return                  The amount of concerts.
      */
     public Integer getTotalItems() {
         return totalItems;
@@ -45,7 +45,7 @@ public class ConcertsDTO {
     /**
      * Set the amount of total items.
      *
-     * @param totalItems The amount of concerts.
+     * @param totalItems        The amount of concerts.
      */
     public void setTotalItems(Integer totalItems) {
         this.totalItems = totalItems;
@@ -54,7 +54,7 @@ public class ConcertsDTO {
     /**
      * Get the amount of concerts to show per page.
      *
-     * @return The amount of concerts to show per page.
+     * @return                  The amount of concerts to show per page.
      */
     public Integer getPageSize() {
         return pageSize;
@@ -63,7 +63,7 @@ public class ConcertsDTO {
     /**
      * Set the amount of concerts to show per page.
      *
-     * @param pageSize The amount of concerts to show per page.
+     * @param pageSize          The amount of concerts to show per page.
      */
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
@@ -72,7 +72,7 @@ public class ConcertsDTO {
     /**
      * Get the current page.
      *
-     * @return The current page.
+     * @return                  The current page.
      */
     public Integer getPageNumber() {
         return pageNumber;
@@ -81,7 +81,7 @@ public class ConcertsDTO {
     /**
      * Set the current page.
      *
-     * @param pageNumber The current page.
+     * @param pageNumber        The current page.
      */
     public void setPageNumber(Integer pageNumber) {
         this.pageNumber = pageNumber;
@@ -90,7 +90,7 @@ public class ConcertsDTO {
     /**
      * Get the amount of pages.
      *
-     * @return The amount of pages.
+     * @return                  The amount of pages.
      */
     public Integer getPageCount() {
         return pageCount;
@@ -99,7 +99,7 @@ public class ConcertsDTO {
     /**
      * Set the amount of pages.
      *
-     * @param pageCount The amount of pages.
+     * @param pageCount         The amount of pages.
      */
     public void setPageCount(Integer pageCount) {
         this.pageCount = pageCount;
@@ -108,7 +108,7 @@ public class ConcertsDTO {
     /**
      * Get the concerts.
      *
-     * @return The concerts.
+     * @return                  The concerts.
      */
     public Object getConcerts() {
         return concerts;
@@ -117,7 +117,7 @@ public class ConcertsDTO {
     /**
      * Set the concerts.
      *
-     * @param concerts The concerts.
+     * @param concerts          The concerts.
      */
     public void setConcerts(Object concerts) {
         this.concerts = concerts;
