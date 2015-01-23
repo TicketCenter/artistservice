@@ -278,13 +278,13 @@ public class ConcertsParser {
     }
 
     /**
-     * Parse tickets price into a double.
+     * Parse the ticket price into a double.
      *
-     * @param ticketsPrice      The tickets price to parse.
-     * @return                  The tickets price.
+     * @param ticketPrice       The ticket price to parse.
+     * @return                  The ticket price.
      */
-    private Double parseTicketPrice(String ticketsPrice) {
-        String[] split = ticketsPrice.replace("-", "").split("\\.");
+    private Double parseTicketPrice(String ticketPrice) {
+        String[] split = ticketPrice.replace("-", "").split("\\.");
         Double price = null;
 
         try {
