@@ -16,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 @SuppressWarnings("WeakerAccess")
 @Path("artists")
 public class Artists {
-
     /**
      * The artists DAO.
      *
