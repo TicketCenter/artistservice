@@ -30,7 +30,7 @@
             </div>
             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
-                    <p>An overview of the source. Filters can be combined.</p>
+                    <p>An overview of the source.</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -93,7 +93,7 @@
             </div>
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
-                    <p>An overview of the source. Filters can be combined.</p>
+                    <p>An overview of the source.</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -129,7 +129,7 @@
             </div>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                 <div class="panel-body">
-                    <p>An overview of the source. Filters can be combined.</p>
+                    <p>An overview of the source.</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
@@ -185,6 +185,7 @@
             </div>
             <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                 <div class="panel-body">
+                    <p>An overview of the source.</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
