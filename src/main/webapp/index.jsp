@@ -2,11 +2,11 @@
 <!--suppress JSUnresolvedLibraryURL, JspAbsolutePathInspection -->
 <html>
 <head>
-    <title>Artists Service API</title>
+    <title>Artist Service API</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Artists Service API">
+    <meta name="description" content="Artist Service API">
     <meta name="author" content="TicketCenter">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
@@ -18,7 +18,7 @@
 <div class="container">
     <div class="page-header">
         <h1>Artist Service <small>API Reference</small></h1>
-        <p>An overview of all the available sources. Click on a specific source for more information about that source.</p>
+        <p>An overview of all the available resources. Click on a specific resource for more information about that resource.</p>
     </div>
     <h4>Concerts</h4>
     <div class="panel-group" id="accordionOne" role="tablist" aria-multiselectable="true">
@@ -30,13 +30,13 @@
             </div>
             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
-                    <p>An overview of the source.</p>
+                    <p>An overview of the resource.</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                             <tr>
                                 <th>HTTP verb</th>
-                                <th>Source</th>
+                                <th>Resource</th>
                                 <th>API key</th>
                                 <th>Filter options</th>
                                 <th>Description</th>
@@ -93,13 +93,13 @@
             </div>
             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                 <div class="panel-body">
-                    <p>An overview of the source.</p>
+                    <p>An overview of the resource.</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                             <tr>
                                 <th>HTTP verb</th>
-                                <th>Source</th>
+                                <th>Resource</th>
                                 <th>API key</th>
                                 <th>Description</th>
                             </tr>
@@ -129,13 +129,13 @@
             </div>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                 <div class="panel-body">
-                    <p>An overview of the source.</p>
+                    <p>An overview of the resource.</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                             <tr>
                                 <th>HTTP verb</th>
-                                <th>Source</th>
+                                <th>Resource</th>
                                 <th>API key</th>
                                 <th>Filter options</th>
                                 <th>Description</th>
@@ -185,13 +185,13 @@
             </div>
             <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                 <div class="panel-body">
-                    <p>An overview of the source.</p>
+                    <p>An overview of the resource.</p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                             <tr>
                                 <th>HTTP verb</th>
-                                <th>Source</th>
+                                <th>Resource</th>
                                 <th>API key</th>
                                 <th>Description</th>
                             </tr>
