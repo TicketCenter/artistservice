@@ -35,6 +35,7 @@ public class ConcertsResource {
      * Get concerts parsed from the Eventful service.
      *
      * @param location          The location to filter by.
+     * @param artist            The artist to filter by.
      * @param pageSize          The amount of concerts to show per page.
      * @param pageNumber        The current page.
      * @return                  Concerts.
@@ -42,10 +43,11 @@ public class ConcertsResource {
      * @see                     #eventful
      */
     @Resource
-    public ConcertsDTO getConcertsResource(String location, Integer pageSize, Integer pageNumber) {
+    public ConcertsDTO getConcertsResource(String location, String artist, Integer pageSize, Integer pageNumber) {
         Map<String, Object> parameters = new LinkedHashMap<>();
         parameters.put("category", "music");
         parameters.put("location", location);
+        parameters.put("keywords", artist);
         parameters.put("page_size", pageSize);
         parameters.put("page_number", pageNumber);
 

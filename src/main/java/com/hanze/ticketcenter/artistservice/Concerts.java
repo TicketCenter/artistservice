@@ -29,6 +29,7 @@ public class Concerts {
      *
      * @param apiKey            The api key to identify.
      * @param location          The location to filter by.
+     * @param artist            The artist to filter by.
      * @param pageSize          The amount of concerts to show per page.
      * @param pageNumber        The current page.
      * @return                  Concerts.
@@ -39,10 +40,11 @@ public class Concerts {
     public String getConcerts(
             @DefaultValue("") @QueryParam("api_key") String apiKey,
             @DefaultValue("") @QueryParam("location") String location,
+            @DefaultValue("") @QueryParam("artist") String artist,
             @DefaultValue("10") @QueryParam("page_size") Integer pageSize,
             @DefaultValue("1") @QueryParam("page_number") Integer pageNumber) {
 
-        return concertsDAO.getConcerts(apiKey, location, pageSize, pageNumber);
+        return concertsDAO.getConcerts(apiKey, location, artist, pageSize, pageNumber);
     }
 
     /**

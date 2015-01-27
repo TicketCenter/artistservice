@@ -13,11 +13,12 @@ public interface ConcertsDAOInterface {
      *
      * @param apiKey            The api key to identify.
      * @param location          The location to filter by.
+     * @param artist            The artist to filter by.
      * @param pageSize          The amount of concerts to show per page.
      * @param pageNumber        The current page.
      * @return Concerts.
      */
-    public String getConcerts(String apiKey, String location, Integer pageSize, Integer pageNumber);
+    public String getConcerts(String apiKey, String artist, String location, Integer pageSize, Integer pageNumber);
 
     /**
      * Get a concert from the concerts resource.

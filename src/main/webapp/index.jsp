@@ -61,6 +61,13 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td><a href="/api/concerts?api_key={api_key}&artist={artist}" target="_blank">artist={artist}</a></td>
+                                <td>Get concerts filtered on artist.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                                 <td><a href="/api/concerts?api_key={api_key}&page_size={page_size}" target="_blank">page_size={page_size}</a></td>
                                 <td>Get concerts filtered on page size.</td>
                             </tr>
@@ -74,7 +81,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p class="small"><em><strong>Example:</strong> <a href="/api/concerts?api_key={api_key}&location=Netherlands&page_size=10&page_number=1" target="_blank">/api/concerts?api_key={api_key}&location=Netherlands&page_size=10&page_number=1</a></em></p>
+                    <p class="small"><em><strong>Example:</strong> <a href="/api/concerts?api_key={api_key}&location=Netherlands&artist=Anouk&page_size=10&page_number=1" target="_blank">/api/concerts?api_key={api_key}&location=Netherlands&artist=Anouk&page_size=10&page_number=1</a></em></p>
                 </div>
             </div>
         </div>
@@ -198,7 +205,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p class="small"><em><strong>Example:</strong> <a href="/api/artists/Cher?api_key={api_key}" target="_blank">/api/artists/Cher?api_key={api_key}</a></em></p>
+                    <p class="small"><em><strong>Example:</strong> <a href="/api/artists/Anouk?api_key={api_key}" target="_blank">/api/artists/Anouk?api_key={api_key}</a></em></p>
                 </div>
             </div>
         </div>
