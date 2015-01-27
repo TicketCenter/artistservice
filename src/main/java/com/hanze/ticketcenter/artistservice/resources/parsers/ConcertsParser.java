@@ -114,14 +114,12 @@ public class ConcertsParser {
         if (event != null) {
             newConcert.put("id", event.get("id"));
             newConcert.put("title", event.get("title"));
-            newConcert.put("description", event.get("description"));
             newConcert.put("artists", parsePerformers((JSONObject) event.get("performers")));
             newConcert.put("image", parseImage((JSONObject) event.get("image")));
             newConcert.put("country", event.get("country_name"));
             newConcert.put("region", event.get("region_name"));
             newConcert.put("city", event.get("city_name"));
             newConcert.put("start_time", event.get("start_time"));
-            newConcert.put("stop_time", event.get("stop_time"));
             newConcert.put("tickets_available", parseTicketsAvailable((String) event.get("longitude")));
             newConcert.put("ticket_price", parseTicketPrice((String) event.get("latitude")));
         } else {
@@ -143,14 +141,12 @@ public class ConcertsParser {
         if (event != null) {
             newConcert.put("id", event.get("id"));
             newConcert.put("title", event.get("title"));
-            newConcert.put("description", event.get("description"));
             newConcert.put("artists", parsePerformers((JSONObject) event.get("performers")));
             newConcert.put("image", parseImages((JSONObject) event.get("images")));
             newConcert.put("country", event.get("country"));
             newConcert.put("region", event.get("region"));
             newConcert.put("city", event.get("city"));
             newConcert.put("start_time", event.get("start_time"));
-            newConcert.put("stop_time", event.get("stop_time"));
             newConcert.put("tickets_available", parseTicketsAvailable((String) event.get("longitude")));
             newConcert.put("ticket_price", parseTicketPrice((String) event.get("latitude")));
         } else {
@@ -262,7 +258,7 @@ public class ConcertsParser {
      */
     private Integer parseTicketsAvailable(String ticketsAvailable) {
         String[] split = ticketsAvailable.replace("-", "").split("\\.");
-        Integer price = null;
+        Integer price = 0;
 
         try {
             if (split.length == 2) {
@@ -285,7 +281,7 @@ public class ConcertsParser {
      */
     private Double parseTicketPrice(String ticketPrice) {
         String[] split = ticketPrice.replace("-", "").split("\\.");
-        Double price = null;
+        Double price = 0.0;
 
         try {
             if (split.length == 2) {
@@ -293,6 +289,8 @@ public class ConcertsParser {
 
                 if (price <= 10) {
                     price += 10;
+                } else if (price > 300) {
+                    price = 300.0;
                 }
 
                 DecimalFormat decimalFormat = new DecimalFormat("#.##");
